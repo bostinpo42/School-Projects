@@ -1,0 +1,147 @@
+Topic 11 Memory Management cont.
+
+When we work with hard disk drives we typically use CHS to logically address the drive. 
+    (Cylinder, Head, Sector)
+    
+The smallest portion of a drive we can read at a time is a sector.
+    Typically 512 bytes. 2^9 bytes
+
+The operating system will typically load no less than a block at a time, which is typically 8 sectors.
+    Typically a block is 4KB, or 4096 bytes. 2^12 bytes.
+
+
+    Data management 
+        File system management
+            Database management systems (DBMS)
+
+        Memory management
+            Relational database management system(RDBMS)
+
+All database systems are relational database systems.
+    relations between data should be taken care of by the creator.
+
+    Tables consist of records
+        Student table contains student records, etc.
+            Records are made up of fields
+                Fields are data related to the record, student id, etc.
+
+
+Suppose a table has 10,000 records  
+    Assume the records have fixed-size fields of 256 bytes (2^8).
+    The student records consume 625 blocks (10,000x2^8)/(2^12).
+
+    Each record has a primary key(in this case, student ID), the key must be a unique number.
+        We can store the primary keys to order the list of records so that we may more easily search records.
+            The benefit to this is that the list of records would take up approx. 8 bytes, as opposed to the 625 blocks.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+N-way Trees - Multiway Search Trees
+    A BST is a tree where m = 2.
+
+    Node <= m children
+
+    1 < keys < m - 1
+
+    Ex. M = 3
+
+    Node
+    K1, K2
+    C1, C2, C3
+
+    A node with a tree that is M = 3 can have 2 keys and 3 children.
+        With N-way trees, the number of keys a node can have should be 1 less than the amount of children it may have.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Multiway Search Trees
+    Node - K1 < K2 < K3 < K(m - 1)
+    C1 < K1, K1 < C2 < K2, ...
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+B-trees
+    Requirements: Every non-leaf node must have half its children(node must have |M/2| children)
+        Cannot create a new node unless number of children is greater.
+        Root(non-leaf) can have at minimum two children(for a single key). Must have one key.
+            Root cannot have the same condition as the first condition, it would not be able to hold a key.
+        All leaf nodes must be at the same level.
+        Built bottom up.
+        Must fullfil requirements of a MST.
+
+
+        M = 4
+        Add = {10, 20, 40, 50, 60, 70, 80, 30, 35, 5, 15}
+
+        Node - { 10, 20, 40 }
+
+        When we add 50, 40 will get promoted. 10 and 20 will be one node, and 40 and 50 will be a new nodes.
+    
+        Node - { 40 }  ---   
+            |              \
+        Node - { 10, 20 }   Node - { 50, 60, 70 }
+            Now, when we add 80 we will need to promote a key up. We will promote 70.
+
+        Node - { 40, 70 } ---                 ---
+            |               \                    \
+        Node - { 10, 20 }    Node - { 50, 60 }    Node - { 80 }
+
+        Node - { 40, 70}    ---                  ---
+            |                   \                    \
+        Node - { 10, 20, 30 }    Node - { 50, 60 }    Node - { 80 }
+
+        Now when we add 35 we will need to promote another key.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+struct node{
+    std::vecto<> key;
+    std::vector<> block address;
+    std::vector<node> children;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Hard link - when two directories have two files that both have i-nodes that point to the same data.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Study Guide
+
+Stacks, *Queues, Dequeues
+    Queue problem
+
+Algorithm Analysis
+    Recursive time complexity problem(may come from a operation on data structure)
+    May also be iterative
+
+Heaps and Priority Queues
+    Heap is not a search structure (we use to return max or min)
+    Heap problem as an array
+    Maybe an algorithm on one of the operations(heapify, creating a sorted array)
+
+Hash tables, Maps, and Skip Lists
+    May be a question on hash tables
+    Question about hashing, hash function and its components
+    **Likely wont be a skip list problem**
+
+Search Trees
+    BSTs, MSTs, M-way search trees, maybe AVL
+
+Sorting, Sets, Selection
+    Quicksort question, may be about the algorithm
+
+Text Processing and Dynamic Programming
+    Dynamic programming problem (0/1 knapsack)
+        **already did longest common subsequence, likely wont be on test**
+    Huffman coding algo.
+
+Graphs
+    Traversals(DFT, BFT)
+    Searching(DFS, BFS, Uniform Cost*, A-star*)
+
+Memory Management  
+    Virtual Memory System, System architecture(cpu, cache, memory, etc.)
+    RDBMS
+    filesystem(partition, logical drives, inode, dir, file, block)
+

@@ -1,0 +1,1 @@
+	Adjacent does not mean diagonal, but orthagonal (top, right, bottom, and left of the cell)

@@ -1,0 +1,115 @@
+			Lecture 5A Classes
+
+class (struct)
+
+User defined data types
+
+class Student
+{
+	std::string name;
+	long int ssn;			>
+	long int studentID;		> These two are known as fields, these are data elements for the class
+	std::string getName();		// functions give us access to the data elements in a class
+};
+
+State of an object in memory are the values of the data objects in a specific point in time.
+
+Whenever we change these data elements we change the state of an object.
+
+As the writer of a class we are responsible for the state of an object and that data objects the class contains.
+
+We typically use camel case for functions and variables : accountName
+
+For classes we use upper camel case : EventLogger
+
+
+Access Modifiers : 
+	private: 
+		anything in private section is not available outside of the object or class
+	public:
+		anything in public is completely available outside of the object or class
+
+
+		Exam : 4/25/2022
+
+1) scaling factors, shifting values (example: randomrange)
+	1 + rand() % 6 <- scaling factor
+	^ shifting value
+
+2) should know the 3 lines needed to create a random engine for function
+	static std::random_device devicename
+	static std::default_random_engine enginename
+	static std::uniform_int_distribution<int> functionname(start,end)
+
+3) know what a function prototype is and how to write a prototype
+	write a function prototype given the name of the function, parameter types and return type.
+a function prototype is used to declare the function exists, it tells the compiler the functions name, its return type
+and the types of its parameters. the compiler uses the prototype to ensure the function matches its prototype and ensures calls to the
+function have the correct number and types of arguments, and that they are in the correct order.
+
+4) know the difference between a function header, a function prototype, and a function signature(function overloading)
+	know function overloading, write an overloaded function given requirements
+a function header includes the name of the function, its return type, and the parameters of the function (arguments)
+a function prototype is just a declaration of the function, it needs the name of the function, return type, and the types of its parameters.
+a function signature is the portion of a function prototype which includes the name of the function and the types of its arguments,
+	a function signature DOES NOT specify the functions return type
+function overloading is when functions share the same name but have different signatures, meaning the arguments to the overloaded functions
+MUST be different.
+
+5) 3 ways to pass things into a function call : pass by reference, pass by value, and pass by pointer
+	subtle differences between passing by reference and by pointer 
+differences: a pointer may be reassigned, while a reference variable cannot, reference must be assigned at initialization
+	pointer can be assigned NULL, reference may NOT be NULL
+	pointers hold a memory address, reference variables share the memory address with what it references to
+	pointers must be dereferenced with * , references can be used directly
+	
+
+6) write a statement using the rand function to do something specific (?)
+
+7) given an entire program, know the specific output of the program.
+	trace tables to keep track of program
+
+8) template functions, how to create them
+
+9) pass an array to a function, how to declare parameters of a function which recieves an array
+	work with arrays from array header and c style arrays
+	pointers and how they relate to arrays, pointer to arrays to grap specific values in arrays
+						offset, increment, 4 different ways
+void printArray(const std::array<type, arraySize>&); <- declare a function which receives an array
+std::array<type,arraySize> arrayName;
+arrayName.at()
+arrayName.at().at();
+
+10) advantages and disadvantages of vectors and arrays (from header file)
+in c style arrays the size of the array must be passed into the function parameters, whereas the size of the array is declared
+along with the array from the array header. 
+arrays are always fixed in size, whereas vectors are dynamic in size
+vectors typically occupy more memory because of their dynamic nature
+accessing elements of a vector is slower than an array because vectors may not always be stored in consecutive memory locations
+arrays are index based (lowest address is starting element, highest address is last element, index-based structure)
+vectors are not index based
+
+
+11) 2d array using array from header file and raw arrays, know how to create one
+std::array<type,arraySize> arrayName;
+std::array<std::array<type, arraySize>, arraySize> arrayName;
+
+12) function for bounds checking arrays from header file
+use ranged base for loop:
+std::array<int,5> items{1, 2, 3, 4, 5};
+for (int item : items) {
+	std::cout << item << " ";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,73 @@
+				Topic 8 Advanced Procedures Cont.
+
+
+Caller (procedure that calls another procedure)							Callee (procedure that is getting called)
+- if necessary preserve eax, ecx, edx								- preserve ebx, esi, edi, esp, ebp     \
+- if necessary push arguments in reverse order onto the stack					- push ebp 				>- Registers are almost always 32-bit
+	just before the call									- move into ebp, esp		       /
+- after call remove arguments from stack							- just before return: pop preserved registers, pop ebp
+- push arguments in reverse order and call							- reserve space on stack for local variables
+- remove args from stack									- order : 1) push ebp, mov ebp, esp 2) reserve space on stack for local var.
+													  3) preserve regs that need preserving (ebx, esi, esp, ebp)
+
+
+
+	Stack:
+- cannot push 8-bit values on stack
+- pushing 16-bit operands may cause page fault or ESP alignment problems
+- expand smaller arguments into 32-bit values using movzx or movsx
+
+
+- when pushing a 64-bit values on the stack push the high-order values first:
+	EDX:EAX
+	push edx
+	push eax
+
+	Local Variables:
+- only statements within a subroutine can view or modify local variables
+
+
+
+
+------------------- <- highest memory address
+	Caller
+------------------- <- ESP
+	arg2	    <- [EBP + 12]
+-------------------
+	arg1	    <- [EBP + 8]
+-------------------
+  return address    <- Procedure call adds return address to stack
+------------------- 
+	EBP
+------------------- <- first address of EBP
+  local variable1   <- [EBP - 4]	\
+-------------------			 > - we need to sub ESP, 8 to create 2 local variables
+  local variable2   <- [EBP - 8]	/
+------------------- <- ESP points here after procedure call
+
+	LEA instruction: Load effective address
+
+	- allows us to move effective addresses (with offsets) into registers, so we can effectively load the addresses of variables into registers
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

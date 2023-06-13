@@ -1,0 +1,32 @@
+Heapify Algorithm
+
+for i = np to 1	
+	downheap(i)
+next i
+
+----------------------------------------------------------------------------------------------------
+
+<k, v> 
+
+k = key 
+
+v = value
+----------------------------------------------------------------------------------------------------
+
+Priority Queue(min/maxheap)
+
+Implement Queue
+
+Use heap as an internal element of the queue
+	store values of the heap instead of an array for the queue
+
+Pass in comparitor for priority queue
+
+Create constructor for initial size of priority queue(initial size of the heap)
+
+No constructor with 0 parameters
+	3 total constructors for heap
+
+Priority Queue's  templated variables will be the arguments for the Queue's heap
+
+

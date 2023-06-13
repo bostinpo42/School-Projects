@@ -1,0 +1,45 @@
+Topic 9 Dynamic Programming and Text Processing
+
+Alphabet is a set of all symbols, or characters, that we define. Can be finite, or infinite. 
+
+Text Processing and String Operations
+    Dealing with character strings
+
+        Ex. DNA data processing, set: {C, G, T, A}
+            Subsequence P: "CGTAAACTTT..."
+
+            We can define a string P from a string of M characters.
+                |P| = M
+                Substring  P[i], P[i + 1], P[i + 2],... P[j - 1], P[j]
+                0 <= i <= j <= m - 1
+
+                ASCII NUL = '\0', or 0.
+
+                C++ has two types of strings. C-style strings, which are comprised of ASCII characters, and std::strings, from the standard template library(STL).
+                C-style strings are always null terminated, so a string of 10 characters actually takes up 11 bytes, due to the null terminator.
+
+
+Dynamic Programming
+    Technique of solving problems by decomposing them into sub-problems, which often time overlap.
+    A set of different techniques that can be applied to solve specific problems.
+    Algorithm design approach
+
+
+Fibonacci Sequence 
+    fib(n) = { return 0, n = 0}
+             { return 1, n = 1}
+             { return fib(n-1) + fib(n-2), otherwise }
+
+    fib(50) would take roughly 2^50 operations to solve.
+
+    One technique to reduce the time it takes to solve fibonacci problems is memoization. 
+        Instead of doing these operations everytime fib() is called, we instead cache the previous results, and iterate over them as much of the fib sequence is repeated.
+
+0/1 Knapsack
+    Called 0/1 because items are indivisible, we either can or cannot add the item into the sack.
+    We have a sack with a maximum weight capacity.
+    If we were to use all the items in the set of given items, it would exceed the sack's capacity.
+
+    V[i][w] = {max(V[i - 1][w]), v[i - 1][w - w[i]] + v[i]}, for w[i] < w 
+              {v[i -1][w]}, otherwise
+

@@ -1,0 +1,74 @@
+Topic 11 Memory Management
+
+Hierarchy of Memory (higher is faster)
+
+CPU
+    CPU core
+        Register file
+        Cache storage (L1)
+
+Motherboard
+    L2 Cache
+    L3 Cache
+    RAM - main memory
+
+-----------------------------------------
+
+There are buses which carry data to and from the CPU to other components (such as ram), these buses are contrived of data and address buses which transport
+data and data adresses to and from the CPU.
+
+
+CPU does not handle memory directly. MMU(memory-management unit) handles memory for the CPU.
+
+
+Standard HDDs will operate at 5400rpm, but can operate up to 15000rpm, on some enterprise drives.
+
+A stack of HDD platters are called a cylinder.
+    Each track of a platter is aligned along the cylinder.
+        
+Platters are partitioned
+
+C,H,S tells us how the hard drive finds particular data on a platter
+    Cylinder, Head, Sector
+
+The operating system is what allocates and distributes physical memory of the computer to run programs.
+    The operating system stores the parts of a program that does not normally get used on the hard drives.
+        When the program runs it will load what it needs from hard drives into physical memory(ram), and from that it will load what it needs to cache or the CPU(and so on).
+
+The VMS(virtual memory system) is what manages memory in an operating system.
+
+Approaches to dealing with memory overload
+    Swapping 
+    Virtual memory - allows programs to run even when they are only partially in main memory(ram)
+
+
+Memory of a running program
+    stack - functions
+    heap - dynamically allocated storage
+    bss - block starting symbol
+    data - initialized variables
+    text - instructions
+
+When a program deallocates dynamically allocated memory, that space becomes free to use, so the memory management portion of the operating system will determine
+how that space gets reused. 
+
+Spacial Locality - the behavior of our program accessing a location in memory, the likelihood of our program accessing a location close to the current location.
+
+Temporal Locality - how long a part of the program stays in memory(time wise) while accessing other parts of the program.
+
+Memory Management Algorithms
+
+    First fit: scan list of segments, finds the first hole big enough to fit
+    Next fit: same as first but keeps track of last location
+    Best fit: search entire list for a hole that is the perfect fit
+    Worst fit: always take the largest available hole
+    Quick fit: keep list for common sizes requested
+
+Virtual memory is a generalization of the base-and-limit Register
+    Instead of having separate relocation for just text and data segments, the entire address space is mapped onto physical memory in fairly small units
+    While a program is waiting for pieces of itself to be read in, the CPU can be doing other processes.
+
+Page Replacement Algorithms
+    Optimal Algorithm - cannot be implemented
+    Second Chance -
+    Clock -

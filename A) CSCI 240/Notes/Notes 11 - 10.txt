@@ -1,0 +1,64 @@
+Lecture 10 Graphs
+
+Ex. Coin Toss Game
+
+State Space Graph
+
+Original State = H T H
+
+Transition States 'H H H' and 'H T H'
+
+There exists edges which connect the transition states to the original states. There may be multiple edges between states, and the original state may loop back to itself
+if the game allows the user to 'skip' a turn. We model each state in the graph and map each vertex between each states to see all possible outcomes and how to reach each state.
+
+Adjacent - in terms of vertices, two adjacent vertices have a path to eachother, in other words they are connected by an edge directly.
+
+Number of edges possible in a undirected graph = n(n-1)/2, with n being the number of nodes.
+
+For a directed graph, the maximum number of edges possible (without multiple edges going in the same direction) would be n(n-1).
+
+Graph Traversals
+
+    Breadth First
+        Fringe/frontier queue, and explored queue. We start with the origin, the beginning node of our traversal.
+        1) While not empty we dequeue the frontier.
+        2) If explored contains vertex, discard it.
+            else process and enqueue into explored. (by process we explore the vertex and add ajacent vertices to the frontier)
+        3) if(frontier is not empty) go to 1.
+
+    Depth First
+        Instead of a frontier queue, we will instead utilize a stack.
+        1) Since we are starting at A, we pop A off of the stack and put it into the Explored queue.
+            We then push onto the stack all the connected vertices. 
+        2) We pop B off of the stack and add it into the explored queue.
+            We then push onto the stack the connected vertices to B.
+        3) if(frontier is not empty) go to 1.
+
+    Iterative Deepening Search (lookup) 
+
+    Exam Study-Guide
+    
+    Search Trees
+        BST(search, insert, delete), know how to do each operation and what is required for each.
+        AVL trees (rotation, height of each child, each parent)
+        Splay trees // likely not, but understand
+        Multiway search trees and 2-4 trees // likely not, but understand
+        Red-black trees
+
+    Sorting, complexity of each different sort 
+        bubble, insertion, selection, quick and merge sort (provided an array, know how to do a specific sort)
+        O(nlogn) sorting algos (merge and quick), 
+        special sorting (bucket, radix sort)
+        empirical comparison of sorting algos
+        lower bound for sorting
+        Set ADT 
+        Selection(prune and search, quick-select)
+
+    Text Processing and Dynamic programming
+        String operations - remember terminology
+        Pattern matching algos
+        Trie data structure, may be questions about it
+        Text Compression(hoffman coding algo)
+        Dynamic programming
+            0/1 knapsack, longest common sequence, fibonnaci sequence, memoiziation approach to solving problems
+             Know in general the approach to dynamic programming

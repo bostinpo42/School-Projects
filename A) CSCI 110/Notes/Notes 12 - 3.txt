@@ -1,0 +1,233 @@
+Final Exam : 9:30AM - 11:30AM 12/10/2021
+
+------------------------------------------------- Chapter 8: Streams ----------------------------------------------------------------------------
+
+Goals : To be able to read/write files
+
+	Convert between strings and numbers using string streams
+	
+	Process command line arguments*
+
+	Understand concepts of sequential and random access*
+
+* = Optional; will not be on the test
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+File i/o : File input/output otherwise known as streams.
+
+You can read from files stored on the hard disk from plain text files, video files, binary files, etc. Our emphasis this chapter will be text files.
+
+To read or write disk files you use variables:
+
+ifstream for input from plain text files
+ofstream for output of plain text files
+fstream for input and output from binary files*
+
+To read anything from a file stream you need to open the stream, the same goes for writing.
+
+1. Open [in_file, out_file]
+2. Read (input) [in_file]
+3. Write (output) [out_file]
+4. Close [in_file, outfile]
+
+The first tep in opening a file is having the stream variable ready. 
+Here's the definition of an input stream variable named in_file:
+
+ifstream in_file;
+
+Suppose you want to read data from a file named input.dat located in the same directory as the program.
+
+All stream variables are objects so we will use a method. The open method does the trick:
+
+in_file.open("c:\\nicework\input.dat");
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+The string class has the c_str method to convert C++ string to a C string:
+
+cout << "Please enter the file name: ";
+string filename;
+cin >> filename;
+ifstream in_file;
+in_file.open(filename.c_str());
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+When the program ends, all streams that you have opened will be automatically closed. You can manually close a stream with the close member function:
+
+in_file.close();
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+We already know how to read and write using files:
+
+string name;
+double value;
+in_file >> name >> value;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+The >> operator returns a "not failed" condition, allowing you to combine an input statement and a test.
+
+A "failed" read yields a false and a "not failed" read yields a true.
+
+if (in_file >> name >> value)
+{
+	//Process input
+}
+
+
+1. create output stream variable
+2. open the file
+3. check for failure to open
+4. write to file
+
+ofstream out_file;
+out_file.open("output.txt");
+if (in_file.fail()) {return 0;}
+out_file << name << " " << value << endl;
+
+If the file does not exist, the system will create the file for the user. If the file does exist, it will overwrite the existing file. 
+The append statement can be used to add to existing files. This will not be covered in this chapter.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+You can even read all data from a file because running out of things to read causes the same "failed state" test to be returned:
+
+while (in_file >> name >> value)
+{
+	// Process input
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Lab 6B 
+
+1. create output file
+
+2. write to output file
+
+3. close output file
+
+4. open output file, input file
+
+5. read
+
+6. close
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Reading Characters
+
+It is possible to read a single character, including whitespace characters.
+
+char ch;
+in_file.get(ch);
+
+The get method also returns the "not failed" condition
+
+It is also possible to process a whole file one character at a time.
+
+char ch;
+while (in_file.get(ch))
+{
+	// Process the character ch
+}
+
+You can also undo this action with:
+
+in_file.unget();
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+The isdigit function is one of the several functions that deal with characters
+
+<cctype> is the header we must use to access these functions
+
+isdigit - number
+isalpha - uppercase & lowercase letters
+islower - lowercase letters
+isupper - uppercase letters
+isalnum - all numbers & letters
+isspace - white space (space, tab, newline, etc.)
+
+The function getline() is used to read a while line up to the next newline character
+
+getline(in_file, line);
+
+You can process a text file line by line using a while loop:
+
+string line;
+while (getline(in_file, line))
+{
+	// Process string
+}
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Formatting Output - Manipulators
+
+strm << setfill('0)
+	<< setw(2) << hours << ":"
+	<< setw(2) << minutes << 
+	<< setfill('  ');
+
+setw - sets field width
+
+setfill - sets the fill character for padding a field
+
+left - left alignment
+
+right - right alignment
+
+fixed - sets fixed format for floating point numbers (scientific notation to decimal)
+
+serprecision - sets the number of significant digits for general format
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+strm can be used for input and output manipulation of strings:
+
+istringstream strm;
+strm.str("January 24, 1973");
+string month;
+int day;
+string comma;
+int year;
+strm >> month >> day >> comma >> year;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

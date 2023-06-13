@@ -1,0 +1,102 @@
+Exam Study-Guide
+    
+    Search Trees
+        BST(search, insert, delete), know how to do each operation and what is required for each.
+            Binary search trees are sorted trees, and must maintain a specific order such that the left children of the root node are less than the root, and the right children of the root are larger than
+            the root. Binary search trees can also be subdivided into smaller subtrees, which also must follow this principle. 
+
+            Search - To search a binary search tree (if we are using recursion) we first must create a base case for the function. Our base case is if our tree is empty, so we check to see if 
+                    our root node is null. If it is, then we return because the tree is empty. If root is not null, then we check to see if the value we are checking is less than or greater than the
+                    root node. If it is less than, we recursively call on the node's left child, we begin searching the left subtree for our term. If the term is larger than our root node, we will recursively
+                    search the right subtree until either the root is found, or we have searched all nodes and cannot find our term.
+
+            Insert - To insert in a binary search tree (recursively) we again check to see if the root node is null. If it is, then we will be dynamically allocating memory to create a new root node. If we are 
+                    adding to a binary search tree that already has a root, then we must check to see if the item we are adding is less than, or greater than the root. If it is less than, we recursively call the 
+                    left child of the root node, until we reach a leaf node, which is where we will add our new node. Otherwise, if the item we are inserting is greater than the root, we recursively call on the 
+                    right child of the root, until we reach a leaf node, which is where we will add our new node.
+
+            Delete - When we are deleting a node in a BST, there are 3 different scenarios which we must handle. If the node is a leaf, then we can simply remove the node from the tree. If the node has one child,
+                    we copy and replace the node, deleting the child. If the node has two children, we find the inorder successor of the node, copy and replace the node we are deleting with the successor, and delete
+                    the successor node. To do inorder traversal, we first process the left subtree, then the root, and then the right subtree.
+
+        AVL trees (rotation, height of each child, each parent)
+            AVL trees look to solve the issue of structure with BST's, in that BST's can become imbalanced depending on the data being put into them. Because most operations on BSTs take time based on the height
+            of the tree, it is beneficial to keep the height of the tree small. This is where AVLs come in. It can be expensive to constantly rearrange the tree to keep its height to a minimum, so there is a balance
+            factor which the tree will use to maintain its height. If the tree goes over the balance factor, it will rotate and rearrange itself to fulfill the BST and also lower its maximum height.
+                AVL trees have the heights of the two child subtrees of any node differ by at most one (to be height balanced).
+                    Add, remove and lookup should all be O(log2(n)) in average and worst case.
+            The height of any given node that isn't the root would be the H(N) = max(H(N.lChild), H(N.rChild)) + 1
+
+            Balance factor - |N.rightChild.height - N.leftChild.height|
+
+            The height of an AVL tree must always be ceil(log2(n)).
+
+            There are 4 cases which cause an inbalance at node N.
+                Outside Branches (require single rotation)
+                    Case 1: The left subtree of N's left child (right rotation)
+                    Case 2: The right subtree of N's right child (left rotation)
+                Inside Branches (require double rotation)
+                    Case 3: The right subtree of N's left child (left-right rotation)
+                    Case 4: The left subtree of N's right child (right-left rotation)
+
+                
+
+        Splay trees // likely not, but understand
+        Multiway search trees and 2-4 trees // likely not, but understand
+        Red-black trees
+
+    Sorting, complexity of each different sort 
+        bubble, insertion, selection, quick and merge sort (provided an array, know how to do a specific sort)
+
+        Bubble - Repeatedly swap adjacent elements, comparing them to see which one is greater. Requires multiple passes of the array to sort properly.
+                 If a swap does not occur during a sweep, we know the array is sorted.
+
+        Insertion - The array is split into a sorted, and unsorted section. We pick values from the sorted section and correctly place them into the sorted portion.
+                    We begin by comparing the first two elements of the array, we swap them if needed, noting that that portion of the array is sorted.
+                    We continue by comapring the next two elements of the array, swapping if needed, and continuing until the array is sorted.
+
+        Selection - Sorts an array by repeatedly finding the minimum element (considering ascending order) from the unsorted part and putting it at the beginning. 
+                    The algorithm maintains two subarrays in a given array:
+                    The subarray which is already sorted and the remaining subarray which is unsorted.
+                    
+        Quick - We select a random pivot. Anything less than the pivot is put into the left of the pivot, and anything larger than the pivot is put to the right.
+                The pivot will now be considered sorted.
+                For the left and right side of the array we will use the last element as the pivot for each. We put anything smaller to the left, and larger to the right. This pivot is now sorted.
+                We continue selecting pivots and rearranging until the array is sorted.
+                Worst case n(log n).
+
+        Merge - We take the number of elements in our array and divide it by 2. That gives us a halfway point.
+                We recursively call on each half of the array, dividing each half of the array once again in half.
+                We recursively call on each split of the array until the array is divided into individual elements.
+                To merge the elements together we need another array using the returned values from the recursive calls.
+                When we merge the elements together we will put them into the proper order.
+                Worst case n(log n).
+
+        Radix - base of number system (binary, 2, hex, 16, octal 8).
+                We order elements based on their least or most significant digit.
+
+        empirical comparison of sorting algos
+        lower bound for sorting
+        Set ADT 
+
+        Selection(prune and search, quick-select)
+            Selection problem - picking the kth largest element. 
+            We can solve this 3 different ways. Either we can do selection by sorting, by partition, or by median(pivot)
+            Sorting - sorting algos (bubble, insertion, selection, merge, etc.)
+            Partition - Variation of Quick sort
+            Median - Quick sort
+
+    Text Processing and Dynamic programming
+        String operations - remember terminology
+        Pattern matching algos
+        **Trie data structure - stands for retrieval
+                                either implemented with arrays, n-ary tree
+                                dimension of the tree is based on the size of the alphabet **implementation based
+                                in n-ary tree, n = size of alphabet.
+                                a-z, 26 characters
+                                for c in alphabet, c - 'a' will give us subscript 0. 'b' will give subscript 1, 'c' will give 2, and so on.
+
+        Text Compression(hoffman coding algo)
+        Dynamic programming
+            **0/1 knapsack, **longest common sequence, fibonnaci sequence, memoiziation approach to solving problems
+             Know in general the approach to dynamic programming

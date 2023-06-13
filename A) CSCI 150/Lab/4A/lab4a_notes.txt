@@ -1,0 +1,9 @@
+1) Since we aren't very familiar with loops yet I decided to just add the values from the array into eax using offsets. Because double words are 4 bytes
+adding 4 as the offset should give the next number of the array. My first attempt printed a weird value, but thats because I mistakenly did not dereference
+intArray when I loaded its value into eax, which would cause eax to be loaded with the memory LOCATION of intArray and not the value stored in it. Easily solved.
+
+2) I copied what was written on slide 40 of the powerpoint, assembled, linked and executed it, debugging through the "terminator" so that I could use layout regs. 
+Interestingly, the negation of al resulted in a Carry and Overflow flag, but the Sign flag was to be expected. Stepping through the program we then add 8000(hex) to 
+ax, which is one more than the largest signed 16-bit number possible(32767), but it did not result in any flags, weird. Next, adding two would cause the negative
+number to go back to positive, resulting in our sign flag. We then move 0 into ax, but it did not result in a zero flag, again weird. We then subtract 2 from ax (0) 
+triggering a carry flag, sign flag. We then move -5 into al, not resulting in any flags. Subtracting 5 from al resulted in an overflow flag. 

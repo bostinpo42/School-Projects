@@ -1,0 +1,39 @@
+// CSCI-Lab_1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+/*
+Prolog
+a.Program Description: This program prints the balance of an account which gains 5% interest anually for the first, second and third year
+b.Author: Austin Ngo
+c.Input variables: Initial balance
+d.Process Flow: This program takes the initial balance input by the user, calculates the total balance after interest for the first, second and third year, then outputs it to the user.
+e.Output variables: Balance of the account after the first, second and third year.
+*/
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    double initial_balance;
+    double balance1;
+    double balance2;
+    double balance3;
+    float interest;
+    cout << "Please enter the initial balance of the account ";
+    cin >> initial_balance;
+    interest = .05;
+    balance1 = initial_balance * interest + initial_balance;
+    balance2 = balance1 * interest + balance1;
+    balance3 = balance2 * interest + balance2;
+    cout << "Thank you, the balance on the account after one year is $" << balance1 << endl;
+    cout << "The balance on the account after two years is $" << balance2 << endl;
+    cout << "The balance on the account after three years is $" << balance3 << endl;
+    system("pause");
+    return 0;
+
+
+
+}
+

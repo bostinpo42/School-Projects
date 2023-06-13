@@ -1,0 +1,142 @@
+/*
+    Week 7 Exercise
+    Author: Dan Chen
+*/
+#include <iostream> //classes for working with input and output
+#include <fstream> //classes for reading and writing from/to files
+#include <string> //classes for working with strings
+#include <stdlib.h> //standard library
+
+using namespace std;
+
+//declare global array, accessible from all functions
+
+double temperatures[10];
+
+int EnterTemperatureData() //function for allowing user to enter 10 temperature readings
+{
+    int pause;
+    system("CLS");//Clear Screen (Windows Only - Mac and Linux users should not use this)
+    cout << "Climate Reporter\n";
+    cout << "--- Data Entry ---\n\n";
+    cout << "Enter the past 10 days worth of daily high temperatures ---\n\n";
+    for (int i = 0; i <= 9; i++)
+    {
+        cout << "Enter Temperature for day " << i + 1 << ": ";
+        cin >> temperatures[i];
+    }
+    cout << "\nData entry complete. Enter 0 to return to main menu ==> ";
+    cin >> pause;
+    return 0;
+}
+int DisplayTemperatureData() //function for generating climate report
+{
+    int pause;
+    double highTemp = -999;
+    double lowTemp = 999;
+    double tempTotal = 0;
+    double averageTemp = 0;
+    system("CLS");//Clear Screen (Windows Only - Mac and Linux users should not use this)
+    cout << "Climate Reporter\n";
+    cout << "--- Ten Day Climate Report ---\n\n";
+    for (int i = 0; i <= 9; i++)
+    {
+        cout << "Temperature for day " << i + 1 << ": " << temperatures[i] << "\n";
+        if (temperatures[i] > highTemp)
+            highTemp = temperatures[i];
+        if (temperatures[i] < lowTemp)
+            lowTemp = temperatures[i];
+        tempTotal = tempTotal + temperatures[i];
+    }
+    averageTemp = tempTotal / 10;
+    cout << "\nThe highest temperature reported for the period was: " << highTemp;
+    cout << "\nThe lowest temperature reported for the period was: " << lowTemp;
+    cout << "\nThe average temperature for the period was: " << averageTemp;
+    cout << "\n\nReport complete. Enter 0 to return to main menu ==> ";
+    cin >> pause;
+    return 0;
+}
+int SaveData() //function for saving data to the temperatures.txt file
+{
+    int pause;
+    system("CLS");//Clear Screen (Windows Only - Mac and Linux users should not use this)
+    ofstream tempDataFile;
+    tempDataFile.open("E:\\temperatures.txt");
+    cout << "File Opened\n\n";
+    for (int i = 0; i <= 9; i++)
+    {
+        cout << "Saving Reading " << i + 1 << " = " << temperatures[i] << "\n";
+        tempDataFile << temperatures[i] << "\n";
+    }
+    tempDataFile.close();
+    cout << "\n\nFile Closed\n";
+    cout << "\nData Saved. Enter 0 to return to main menu ==> ";
+    cin >> pause;
+    return 0;
+}
+int LoadData() //function for loading data from the temperatures/txt file
+{
+    int pause;
+    string line;
+    ifstream tempDataFile;
+    system("CLS");//Clear Screen (Windows Only - Mac and Linux users should not use this)
+    tempDataFile.open("E:\\temperatures.txt");
+    if (tempDataFile.is_open())
+    {
+        cout << "File Opened\n\n";
+        int i = 0;
+        while (getline(tempDataFile, line))
+        {
+            cout << "Loading Reading " << i + 1 << " = " << line << "\n";
+            temperatures[i] = atof(line.c_str());
+            i++;
+        }
+        tempDataFile.close();
+        cout << "\n\nFile Closed\n\n";
+    }
+    else
+    {
+        cout << "\nError opening file.\n";
+        cin >> pause;
+    }
+    cout << "\nData Loaded. Enter 0 to return to main menu ==> ";
+    cin>> pause;
+    return 0;
+}
+int main()
+{
+    int menuChoice = -1;
+    while (menuChoice != 0)
+    {
+        system("CLS");//Clear Screen (Windows Only - Mac and Linux users should not use this)
+        //Display Menu
+        cout << "Climate Reporter\n";
+        cout << "--- Main Menu ---\n\n";
+        cout << "1 - Enter Temperature Data\n";
+        cout << "2 - Display Temperature Data\n";
+        cout << "3 - Save Temperature Data to File\n";
+        cout << "4 - Load Temperature Data from File\n";
+        cout << "0 - Exit Program\n\n";
+        //Get Menu Option from User
+        cout << "Enter Choice: ";
+        cin >> menuChoice;
+        //Call other modules based on user input
+        switch (menuChoice)
+        {
+        case 1: EnterTemperatureData();
+            break;
+        case 2: cout << DisplayTemperatureData();
+            break;
+        case 3: cout << SaveData();
+            break;
+        case 4: cout << LoadData();
+            break;
+        case 0: cout << "Exiting Program\n";
+            break;
+        default: cout << "Error - Please Try Again\n";
+            break;
+        }
+    }
+    system("pause");
+    return 0;
+}

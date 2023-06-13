@@ -1,0 +1,9 @@
+Account class
+Maintains as data members the attributes *name*, *balance*, *history*
+    -Provide member functions for behaviours
+        -set and get name   
+        -Querying the balance (getBalance)
+        -Making a deposit that increases the balance (deposit)
+        -Making a withdrawal that decreases the balance (withdraw)
+        -getBalance
+        -Deposit

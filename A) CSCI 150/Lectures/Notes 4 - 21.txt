@@ -1,0 +1,51 @@
+			Topic 7b Integer Arithmetic
+
+MUL - unsigned multiply, multiplies an 8, 16, or 32 bit operand by either AL, AX, or EAX
+
+syntax:
+	mul reg/m8		; product = AX
+	mul reg/m16		; product = DX:AX
+	mul reg/32		; product = EDX:EAX
+
+we need to cast the size of the operand for mul if we are using memory locations, but not registers
+
+	val1: dw 2000h
+	val2: dw 100h
+
+	mov ax, [val1]
+	mov word [val2]	; dx:ax = 00200000h, CF = 1 because value was large enough to be carried into dx
+
+IMUL - signed integer multiply, multiplies an 8, 16, or 32 bit signed operand by either AL, AX, or EAX
+	preserves the sign of the product by sign-extending it into the upper half of destination register
+
+	[i]mul 	
+		cl -> ah:al
+		cx -> dx:ax 
+		ecx -> edx:eax
+		
+	prod: resq 1
+
+	mov [prod], eax
+
+
+DIV - unsigned division, performs 8, 16, and 32 bit division on unsigned integers
+	single operand is supplied which is assumed to be the divisor
+
+syntax:	
+	div reg/mem8	; dividend = ax, divisor = reg/mem8, quotient = al, remainder = ah
+	div reg/mem16	; dividend = dx:ax, divisor = reg/mem16, quotient = ax, remainder = dx
+	div reg/mem32	; dividend = edx:eax, divisor = reg/mem32, quotient = eax, remainder = edx
+
+	[i]div    	  R	Q
+		ah:al -> ah    al
+		dx:cx -> dx    dl
+	      edx:ecl -> edx   edl
+
+
+
+
+
+
+
+
+

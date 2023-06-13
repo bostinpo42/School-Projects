@@ -1,0 +1,42 @@
+					Topic 9 Lecture 10
+
+Directories and files are the same object, however directories are special files which are capable of holding multiple files
+
+left ctrl + L to clear command prompt
+
+BASH - born again shell
+	
+path : file system address of a directory or file
+
+ABSOLUTE path : path from the root(/) of the file system 
+
+Relative path : path from current location, does not begin with /
+
+makedir : make directory
+
+touch : touch a file, if a file is not found then create it
+
+find -name "" : find a file, a directory should be specified after find
+
+chmod : change mode of a directory, allows changes to permissions in the directory
+
+pwd : print working directory
+
+cd : change directory
+cd . : change directory to current directory
+
+ls ~ : list objects in home directory
+
+ls / etc : list all files within absolute path
+
+ls .. : list parent directory (/home/nslab) // we would be looking at /home with this command
+
+shred : overrite and unlink (delete) file from directory
+
+example of DNS : 
+	domain naming system
+	 v hostname
+https://www.amazon.com/
+^	      ^     ^ toplevel domain
+^             ^ domain
+^ webservice protocol

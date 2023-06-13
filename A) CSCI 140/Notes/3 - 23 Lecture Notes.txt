@@ -1,0 +1,54 @@
+	3A - Enumeration Types
+
+Enums are typically used to make code easier to read
+
+2 Catergories in C++ : Scoped & Unscoped
+
+Scoped enums : automatically set up constants and assign integer values for them, only a name is needed for scoped enums
+
+-------------------------------------------
+	(UNSCOPED ENUM EX)
+	enum Player { X, O, BLANK };
+
+	if (board[i] = BLANK)
+	{
+		// code goes here
+	}
+------------------------------------------
+	enum Months { Jan, Feb, ...};
+
+------------------------------------------
+	(SCOPED ENUM EX)
+	enum class Player:char { X, O, BLANK };	
+	
+	if (player == Player::BLANK)
+	{
+		// code goes here
+	}
+------------------------------------------
+	
+	class Player {
+		static const int X{O}
+
+------------------------------------------
+
+	enum class DiM { JAN = 31, FEB = 28, ... }; // when assigning values to enums, there CANNOT be duplicate values
+
+------------------------------------------
+
+	(UNSCOPED ENUM EX)
+	enum Status { IN_PLAY, WIN, LOSS };
+
+-----------------------------------------
+	
+	EXAM #1 3/28/2022
+
+1. Number Systems (given number of bits & signed/unsigned value) (range of values given number of bits) (conversions from decimal to binary to hex, hex to binary, etc.)
+2. 4 Stages of Compilation (compiler) (input/output of each stage)
+3. Layout of a running program in memory (memory stack)
+4. Fundamental actions of CPU (3 different actions, fetch, encode, execute)
+5. Relational Operators (final value of operation, order of operation)
+6. Boolean Logic & Bitwise Boolean Logic (and/not/or and XOR)
+7. Comments in C++ (//single line /* multiline */)
+8. Syntax (similar to lab questions)
+9. rand() - range of values, scaling, shifting, etc.  

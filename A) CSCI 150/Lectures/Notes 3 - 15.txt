@@ -1,0 +1,97 @@
+Processor Architecture (IA 32)
+
+Addressable Memory
+
+We typically work within "Protected Mode" which has 4GB of memory and 32-bit address. We can access memory addresses from 00000000 to FFFFFFFh
+
+The CPU contains storage, which consists of register files, most of which are 32-bit wide. There are 8 80-bit registers, which are used for floating point numbers.
+There are also 8 64-bit registers, and 8 128-bit registers
+
+The most used registers, general use, are EAX, EBX, ECX and EDX. 
+
+32-bit registers
+EAX - accumulator (stores data for operations)
+ECX - loop counter
+EBP - extended frame pointer (base pointer)
+ESP - stack pointer
+EFLAGS - holds the bitmap, status and control flags (tells us the results of previous operations)
+EIP - instruction pointer (address of the next instruction to be fetched in execution process)
+
+We can use the lower parts of a register if we do not need access to other parts of the register
+	ex. EAX(32 bit) can be broken down into AX(16) and AX(16) can be broken into AH(8) and AL(8).
+
+We do not always work with full 32-bit addresses, when possible we can use offsets to addresses to make them more concise.  
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Assembly Language Fundamentals
+
+When declaring integer constants we can optionally lead it with a + or - sign
+we can state the values in terms of binary, decimal, hexadecimal, or octal digits
+We can also attach a suffix/prefix to a integer value to denote it as hex, binary, decimal or octal. ex. 30d, 6Ah, 42, 1101b
+If we are using a value with a leading letter, we must put a 0 in front of it for the assembler.
+With NASM (netwide assembler) we can specify numbers in a variety of ways:
+H or X for hex
+D or T for decimal
+Q or O for octal
+B or Y for dinary
+
+We can use constant interger values in the form of expressions as well. Expressions in Assembly Language also operate with precedence levels
+
+Strings are arrays of characters, and are parsed as such in Assembly Language
+
+Reserved words cannot be used as identifiers (See NASM reference)
+	Identifiers: valid characters in labels are letters, numbers, _,$,#,@,~,., and ?
+			case sensitive, first character MUST be [a-z],_,., and ?    |  Identifier may also be prefixed to indicate it is 
+			intended as an identifier, not a reserved word
+
+
+NASM gives special treatment to symbols beginning with a period. A label beginning with a single period is treated as a local label, which means 
+that it is associated with the previous non-local label.
+
+Directives
+
+Directives are commands that are recognized and acted upon by the assembler
+	not part of intel instruction set
+	used to declare code areas, data areas, select memory model, declare procedures, etc.
+	different assemblers have different directives
+
+Instructions
+
+Assembled into machine code by assembler
+Executed at runtime by CPU
+We are using the Intel IA-32 instruction set
+Instruction set contains:
+Label (optional)
+Mnemonic (required) : a name given to something to make it easier to understand (each instruction contains mnemonic for a instruction set)
+Operand (depends on the instruction)
+Comment (optional) : although optional, comments should be used regularly to indicate what each line is doing.
+
+Labels
+
+Labels act as place markers (marks the address/offset of code and data)
+	case sensitive
+	follow identifier rules
+
+Data labels : must be unique
+
+Code Label : target of jump and loop instructions
+
+Mnemonics and Operands
+Instruction mnemonics : not case sensitive, memory aid
+Operands: used for constants, constant expressions, registers, memory (data labels)
+constants and constant expressions are often called immediate values
+
+Comments
+Comments : explain the programs purpose, when it was written, and by whom, give revision information, show tricky coding techniques and give application-specific explanations
+	Single line comments begin with a semicolon (;)
+
+
+
+
+
+
+
+
+
+

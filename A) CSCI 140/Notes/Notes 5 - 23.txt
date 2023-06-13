@@ -1,0 +1,19 @@
+				Topic 7 File Processing
+
+C++ I/O (input/output) occurs in streams, which themselves are sequences of bytes
+
+For input operations, bytes flow from a device (keyboard, disc drive, network, etc) to the system's memory (RAM)
+
+C++ provides "low-level" and "high-level" I/O capabilities
+	low-level i/o (unformatted i/o) specify some number of bytes to be transferred device-to-memory or memory-to-device
+		the individual byte is the item of interest
+		high-speed, high-volume transfers but somewhat inconvenient
+	
+	high-level i/o (formatted i/o) bytes are grouped into meaningful units, i.e integers, floating point numbers, characters, strings or user-defined types
+		type-oriented capabilities are satisfactory for most i/o other than high-volume file processing
+
+
+#include <cstdio>
+
+fopen("filename", "rb")  // opens file with read binary
+fopen("filename", "wb")  // opens file with write binary

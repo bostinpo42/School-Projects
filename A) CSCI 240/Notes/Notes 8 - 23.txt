@@ -1,0 +1,41 @@
+Memory allocation of a running program
+
+Smallest unit of memory is a byte, each byte has its own address
+
+A byte is comprised of 8 bits.
+
+Most modern hardware is byte addressable, meaning each byte has its own address
+
+Highest address (FFFFFFFF) -----------
+
+Stack
+	- Function data, used when a function is called
+
+Heap
+	- Dynamically allocated memory	
+
+Block Starting Symbol
+	- Uninitialized global variables stored here
+
+Data Section
+	- Initialized variables stored here
+
+
+Text Section
+	- Keeps track of all program instructions
+
+Lowest Address (00000000) --------------
+
+
+Compiler Stages (in our case, G++)
+
+1. Preprocessing Source Code (txt file generally, in ASCII, in our case .cpp)
+	- Outputs expanded source code
+	- Preprocessor directives, or macros, will tell the compiler to open specific header files in the computer's system. It will add code from these header files
+	directly into our program's source code.
+2. Compile stage 
+	- takes expanded source code, optimizes it for hardware and outputs assembly code
+3. Assembly
+	- takes assembly code and turns it into object code
+4. Linking
+	- takes assembly code, links it and creates an executable

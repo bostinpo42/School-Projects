@@ -1,0 +1,27 @@
+	Topic 4 Lecture 4a - Data Transfer
+
+Operand Types
+
+Immediate - constant integer - value is encoded within instruction
+
+Register - name of a register - register name is converted to a number and encoded within the instruction
+
+Memory - reference to a location in memory - memory address is encoded within instruction or a register holds the address of a memory location
+
+db - data byte / defined byte
+
+dereferencing [] will pull the value stored in a specific memory address.
+
+mov instruction : 
+	- move from source to destination : mov destination, source
+	- no more than one memor operand is permitted
+	- CS, EIP, and IP cannot be the destination
+	- no immediate to segment moves
+
+You must explicitly code for the size of the memory location.
+
+When you copy a smaller value into a larger destination, MOVZX instruction fills (extends) the upper half of the destination with zeros
+
+The MOVSX instruction fills the upper half of the destination with a copy of the source operands sign bit.
+
+The location of an array represents only the first byte, which is why offsets are used when dealing with arrays to access the other values in the array.

@@ -1,0 +1,59 @@
+/*
+a. Program Description : This program takes a user input word and counts how many syllables the word contains.
+b. Author : Austin Ngo
+c. Input variables : Word
+d. Process Flow : User inputs word, the program loops for each letter of the word to check for a vowel, then increments the amount of syllables. Double vowels and the letter 'e' at the end of a word do not count  towards syllables.
+e. Output variables : The number of syllables in a word.
+*/
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <cstdlib> 
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	string word;
+	int syl = 0;
+
+	cout << "Please enter a word to find out how many syllables it contains. " << endl;
+	cin >> word;
+
+	for (int i = 1; i <= 2; i++)
+	{
+		if (i == 1)
+		{
+			cout << "Words";
+		}
+		else if (i == 2)
+		{
+			cout << setw(30) << "Syllables" << endl;
+		}
+	}
+
+	for (int vowels = 0; vowels < word.length(); vowels++)
+	{
+		if ((word[vowels] == 'a') || (word[vowels] == 'e') || (word[vowels] == 'i') || (word[vowels] == 'o') || (word[vowels] == 'u') || (word[vowels] == 'y'))
+		{
+			if ((word[vowels - 1] == 'a') || (word[vowels] - 1 == 'e') || (word[vowels] - 1 == 'i') || (word[vowels] - 1 == 'o') || (word[vowels] - 1 == 'u') || (word[vowels] - 1 == 'y'))
+			{
+				syl = syl - 1;
+			}
+			syl = syl + 1;
+			if (word[word.length() - 1] == 'e')
+			{
+				syl = syl - 1;
+				if (syl == 0)
+				{
+					syl = syl + 1;
+				}
+			}
+
+		}
+	}
+	cout << word << setw(30) << syl << endl;
+	system("pause");
+	return 0;
+}

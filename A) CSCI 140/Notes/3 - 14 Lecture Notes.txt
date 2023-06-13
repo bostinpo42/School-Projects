@@ -1,0 +1,124 @@
+4 Structures of programming - If/else, do while loops, while loops, for loops
+
+For loop - [] optional
+
+for([declare and/or int]; [test]; [update])
+
+size_t - unsigned long integer; use for counter variables unless signed values are necessary.
+
+
+nth Fibonnaci number -  f(n) = n = 0; return 0; n = 1; return 1;
+				return f(n-1) + f(n-2)
+for_loop.ccp
+
+----------------------------------------------------------------------------------------------------
+
+			Errors : 2 types
+Syntax: formatted incorrectly (NOT bugs)		Logic: often time bugs
+
+Fatal:						Nonfatal: 
+	Prevents program from running			 Program will run, but inconsistently/incorrectly
+
+-----------------------------------------------------------------------------------------------------
+
+Ternary operators:
+
+test ? true result : false result
+
+y = (x > 10 ? 5 : 20)
+
+-----------------------------------------------------------------------------------------------------
+
+Post/pre increment semantics - post increment requires reading and writing from memory, whereas pre increment simply creates a new variable and evaluates it. This is why 
+pre increment is always more efficient than post increment.
+
+i++ / ++i
+
+i++ (postinc (i)) - post increment acts similar to a function call
+
+int postinc(int i)
+{
+
+}
+	{
+	int tmp{i};
+	i = i + 1;
+	return tmp;
+	}
+
+
+++i
+
+int preinc(int i)
+{
+
+}
+	{
+	i = i + 1;
+	return i;
+	}
+
+---------------------------------------------------------------------------------------------------------------------
+
+Logical Operators
+
+Compound operators using a,b
+
++=		a += b		a = a + b
+
+-=		a -= b		a = a - b
+
+*=		a *= b		a = a * b
+
+/=		a /= b 		a = a / b
+
+%=		a %= b		a = a % b
+
+&=		a &= b		a = a & b
+
+|=		a |= b		a = a | b
+
+
+
+and (&&)
+
+a   b	a&&b
+F   F	 F
+F   T    F
+T   F    F
+T   T    T
+
+
+
+Equivalence Rules
+
+Commutativity : a && b == b && a (order does not matter)
+
+Associativity : (a && b) && c = a && (b && c)
+
+Distributivity : a && (b || c) = (a && b) || (a && c) ; a || (b && c  = (a || b)  && (a || c)
+
+deMorgan's Theorem
+
+!(a && b) = !a || !b
+!(a || b) = !a && !b
+
+short circuit evaluation : if the first part of a conditional operator returns false, the second part will never be evaluated.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

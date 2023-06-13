@@ -1,0 +1,295 @@
+Two Aspects need to be considered when looking at the size of a problem and how it affects runtime:
+
+Time Complexity
+	- how much time a problem takes to solve in terms of the size of the problem.
+
+
+and Space Complexity
+	- certain problems require a amount of space in memory to be solved.
+
+
+If we were to map our problem on a graph, with time (t) as our Y axis, and N (algorithm size) as our X axis
+
+f(n), or f(t) is an estimate of the amount of time taken by the algorithm to solve our problem.
+
+Our graph will be a growth chart of our function over N, the size of our problem.
+
+Growth Functions (Ascending in time complexity):
+
+Constant - our function does not grow despite N approaching infinity, it always stays constant. f(n) = c
+
+Logarithmic - our function grows logarithmically, no matter what the value of N, our function will approach a value for time. f(n) = log(n).
+
+Linear - our function grows linearly, at a constant rate.
+
+nlog(n) -  f(n) = n*log(n)
+
+Quadratic - f(n) = c(n^2)
+
+Cubic - f(n) = c(n^3)
+
+Exponential - f(n) = c^n
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Logarithm Rules:
+1) logb(ac) = logb(a) + logb(c)
+2) log(a)/(c) = log(a) - log(c)
+3) log(a)^c = c * log(a)
+4) logb(a) = logd(a)/logd(b)
+5) b^logd(a) = a^logd(b)
+
+
+log(2n) = log(2) + log(n)
+log(n^3) = 3log(n)
+log(2^n) = n*log(2)
+log4(n) = logn/log(4)
+2log(n) = n^(log2) = 1*n
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Asymtotic Notation
+
+Our goal is to try and find an upper bound to our problem, essentially its limit, as the worst-case scenario for time complexity.
+let f(n) represent the growth of the problem and map to a real number and g(n), a function that closely bounds f(n) such that c*g(n) is always >= f(n) for n >= n(0), n(0) > 0
+Big O = O(g(n)) = f(n), our worst case
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Examples:
+
+f(n) = 8n - 2	<= cg(n) 8n 
+O(g(n)) >= f(n) or O(n) >= f(n)
+
+
+f(n) = 5(n^4) + 3(n^3) + 2(n) + 1
+c*g(n) = (5 + 3 + 2 + 1)(n^4) = 11(n^4) > f(n)
+O(g(n)) = O(n^4) = f(n) n>= 1 where n(0) = 1
+
+f(n) = 5(n^2) + 3(n)log(n) + 2(n) + 5
+c*g(n) = (5 + 3 + 2 + 5)n^2
+f(n) = O(g(n)) = O(n^2) n(0) = 1, for all n >= 1
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Big Omega, best-case scenario
+
+True for f(n) >= c*g(n)
+
+g(n) = O(f(n))
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Big Theta, average-case scenario
+
+c1(g(n)) <= f(n) <= c11(g(n)
+
+for some n(0) where n >= n(0) and n(0) > 0
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Our algorithm can be broken down into 3 types of functions:
+
+		Algorithm:
+
+constants:
+
+iteratives:
+
+recursives:
+
+---------------------------------------------
+
+function(some parameters) {
+	int i = 0
+	while(i < n) {
+		constant( )
+		i = i + 1
+	}
+	return
+}
+
+val i       = 1, 2, 3, ... n
+work done   = c, 2c, 3n, ... nc
+
+f(n) = O(n)
+
+---------------------------------------------
+
+for i from 1 to n
+	for j from 1 to n
+	end for j
+end for i
+
+when i = 1	2	3	n
+	cn	2nc	3nc	n^2c
+
+f(n) = n^2, O(n^2)
+
+----------------------------------------------
+
+for i = 1 to n
+	for j = i to n
+	const c
+	end for j
+end for i
+
+i = 1	2	3	...n
+    cn  c(n-1)  c(n-2)	   1
+
+n(n+1)/2 = (n^2+n)/2
+
+O(n^2)
+
+----------------------------------------------
+
+for i = 1 to n
+	for j = 1 to 100
+	const work
+
+f(n) = 100n + 100c
+O(n)
+
+----------------------------------------------
+
+Recursion Relation Topic
+
+1) find recurrence relation
+2) back substitution
+
+func(a[], n)
+	if n = 1
+	return a[1]
+	
+	else return a[n] + func(a, n - 1)
+
+1. T(n) = 1 + T(n - 1)
+2. T(n-1) = 1 + T(n - 2)
+3. T(n-2) = 1 + T(n - 3)
+4. 2-> T(n) = 1 + 1 + T(n - 2) = 2 + 1(n - 2)
+5. 3-> 4 T(n) = 3 + T(n - 3)
+
+T(n) = k + T(n - k)
+
+We need to find when n - k = 1
+which is k = n - 1
+
+T(1) = n - 1 + 1
+T(1) = n 
+O(n) = f(n)
+	
+-----------------------------------------------
+BinSearch Example
+
+T(n) = 1 + T(n/2)
+
+T(n/2) = 1 + T(n/4)
+
+T(n/4) = 1 + T(n/8)
+
+2->1 T(n) = 2 + T(n/4)
+
+3->4 T(n) = 3 + T(n/8)
+
+T(n) = k + T(n/2^k)
+
+We need to find when n/2^k = 1
+which is log(n) = k
+
+T(1) = log(n) + 1
+
+O(log(n)) = f(n)
+
+-------------------------------------------------
+
+MergeSort(array[], size){
+	mergeSort(lower half array) -
+	mergeSort(upper half)	    -  both these recursive calls end up being 2*logn operations
+	mergeSort(lower half, upper half) - this ends up being n operations
+}
+
+
+T(n) = 2*T(n/2) + cn
+T(n/2) = 2*T(n/4) + cn/2
+T(n) = 2[2T(n/4) + cn/2] + cn
+     = 4T(n/4) + cn + cn
+     = 4T(n/4) + 2cn
+T(n/4) = 2T(n/8) + cn/4
+T(n) = 4[2T(n/8) + cn/4] + 2cn
+T(n) = 8T(n/8) + cn + 2cn
+T(n) = 8T(n/8) + 3cn
+
+
+T(n) = (2^k) * T(n/2^k) + kn
+
+We need to find when n/2^k = 1
+k must be equal to log(n) because T(1) = (2^log(1)) * T(n/2^log(1)) + log(1)n // log(1) = 0
+
+T(1) = 2^log(n)T(1) + log(n)*n 
+     = n*log(n)
+
+O(nlog(n))
+
+
+------------------------------------------------
+Exam Tuesday
+
+C++: Object oriented programming, inheritence, pure virtual functions and abstract classes, interfaces
+
+Stack - bag collection, stack collection, queue collection, deque(array or linked list), linked lists and nodes
+
+Deque: (linked list, what it would look like, double linked, circular, etc), should be implemented with double linked list
+	traverse the linked list in both directions, head and tail, front(prev = null), back(next = null)
+	Operations: addFront, addBack, Front, Back, clear, removeFront, removeBack, empty
+	Can be implemented as a queue or a stack.
+
+Downsides of using an array: requires a size, resizing the array requires it to be copied 
+
+Benefits of using an array: do not need to traverse the array to get to a specific number.
+
+Running Memory:
+Stack
+Heap - nodes of linked list will be strewn across memory,
+BSS
+Data
+Text
+
+Cache miss: if memory is not stored contiguously in memory then it will be expensive as multiple cycles of memory have to be loaded in order for our program to run.
+Which is why traversing a linked list can be expensive in terms of memory.
+
+Memory miss: we want our memory to be local and close together (spacial locality) so that memory can be loaded effectively and efficiently in our program.
+
+Allocated memory gets re-used, because if a piece of memory becomes available, rather than shifting things around in memory to make space, we instead just utilize 
+the free space as seen fit.
+
+
+Push pop peek clear empty - Stack
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

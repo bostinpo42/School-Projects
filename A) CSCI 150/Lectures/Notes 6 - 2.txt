@@ -1,0 +1,58 @@
+
+Written Final:
+
+Study prior exams
+
+Binary and Hex number systems
+
+//                               IEEE64 Floating point numbers (wont be on the exam, but should know in general)
+
+Show representation of signed integer values given the size (word, double word, byte etc)
+	Addition + subtraction
+
+Binary multiplication (might not be on the exam)
+	bitwise and, or, xor, not
+
+Procedures, advanced procedures
+	How to setup stack frame for procedure call, how to tear down
+	how to reserve space for local variables, as well as how to access this space
+	dont have to reserve registers unless using it for a syscall
+		convert data size, cdq, etc.
+
+Division, multiplication, study arithmetic
+	idiv, div, imul, mul
+
+Signed and unsigned jumps, know which ones are which
+
+Know shifting and rotate operations (study previous exam)
+
+4 Atomic control structures (IF, IF ELSE, WHILE, DO WHILE)
+
+How to define a struc (struc is a macro)
+
+ITOA working, ATOI is working
+	Null Terminated procedures working, get NT input, print NT output
+	get nt, atoi_nt
+	
+File system operations
+	absolute path, relative path
+	cd command, ls command, makedir, rm, basic commands
+
+Heap space and memory management
+	benefits and issues of runtime allocation
+
+String operations and arrays
+	movesb, etc.
+
+Understand file copy utility (program we made)
+	open and closing files
+		reading and writing, to and from files
+			file descriptor (stdin, stdout)
+
+Rand procedure (from lib)
+
+How to make newline character
+	0xa, 0Ah, 10
+	
+Convert strings to NT strings
+

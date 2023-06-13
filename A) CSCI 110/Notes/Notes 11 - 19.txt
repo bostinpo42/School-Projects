@@ -1,0 +1,298 @@
+Chapter 7 - Pointers
+
+Pointers are the address of a variable.
+
+- Pointers allow sharing of values stored in variable way
+
+- Pointers can refer to values that are allocated on demand (dynamic memory allocation)
+
+- Pointers are necessary for implementing polymorphism, an important concept in object oriented programming.
+
+----------------------------------------------------------------------------------------------------------------
+
+double* account_pointer
+
+      ^ The type of this variable is "pointer to double"
+
+Every byte of RAM has an address. The address of a variable is stored on a specific byte of RAM. This is the address, which we can access with pointers.
+
+double harrys_account = 0;
+double* account_pointer = &harrys_account;
+
+Use account_pointer to access harrys_account
+
+To access a different account, like joint_account, change the pointer value stored in account_pointer and similarly use account_pointer.
+
+double harrys_account = 0;
+account_pointer = &harrys_account;
+double joint_account = 1000;
+account_pointer = &joint_account;
+------------------------------------------------------------------------------------------------------------------
+
+Dereferencing - using a variable instead of a pointer, variable value, not pointer value.
+
+// displays the current balance
+cout << *account_pointer << endl;
+
+//withdraw $100
+*account_pointer = *account_pointer - 100;
+
+//deposit $1000
+*account_pointer = *account_pointer + 1000;
+
+---------------------------------------------------------------------------------------------------------------------
+
+When a pointer variable is first defined, it contains a random value. It must first be initialized to be used.
+
+double* account_pointer; //No initialization
+
+*account_pointer = 1000; 
+
+To use a pointer variable, initialize it right away.
+
+There is a special value that you can use to indicate a pointer that doesn't point anywhere: NULL
+
+double* account_pointer = NULL; // Temporary fix to use a pointer without initializing it.
+
+
+double* account_pointer = NULL;
+if (account_pointer != NULL)	// This is allowed because we assigned NULL to the value of the pointer.
+{
+	cout << *account_pointer;
+}
+
+Trying to access data through a NULL pointer is still illegal, it will cause your program to crash.
+
+---------------------------------------------------------------------------------------------------------------------
+
+In C++ it's legal to define multiple variables together: 
+int i = 0, j = 1;
+
+This can be confusing when used in conjunction with pointers:
+double* p, q;
+
+The * is only associated with the first variable, so 'p' is a double* pointer and q is a double value.
+To avoid confusion, define each pointer variable separately.
+double* p;
+double* q;
+
+----------------------------------------------------------------------------------------------------------------------
+
+Recall that the & symbol is used for reference parameters:
+
+void withdraw(double& balance, double amount)
+{
+	if (balance >= amount)
+	{
+		balance = balance - amount;
+	}
+}
+
+We can accomplish the same thing using pointers:
+
+void withdraw(double* balance, double amount)
+{
+	if (*balance >= amount)
+	{
+		*balance = *balance - amount;
+	}
+}
+
+
+To call the program:
+withdraw(&harrys_checking, 1000);
+
+------------------------------------------------------------------------------------------------------------------------
+
+In C++ there is a deep relationship between pointers and arrays. This relationship explains the limitations of arrays.
+
+The name of the array denotes a pointer to the starting element.
+
+Consider:
+
+int a[10];
+
+int* p = a; // P points to a[0].
+
+You can use the array name as you would a pointer. 
+
+These output statments are equivalent:
+
+cout << *a;
+cout << a[0];
+
+Pointer arithmetic allows you to add an interger to an array name.
+
+int* p = a;
+
+p + 3 is a pointer to the array element with index 3.
+
+*(p + 3) = a[3]
+
+The array/pointer duality law states:
+
+a[n] is identical to *(a + n)
+
+Where a is a pointer into an array and n is an integer offset.
+
+Now it should be clear why array parameters are different from other parameter types.
+
+double sum(double a[], int size)
+{
+	double total = 0;
+	for (int i = 0; i < size; i++)
+	{
+		total = total + a[i]
+	}
+}
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Sometimes programmers take pride in minimizing the amount of instructions, even if the resulting code is hard to understand:
+
+while (size-- > 0)
+{
+	total = total + *p;
+	p++;
+}
+
+Could also be written as:
+
+total = total + *p++;
+
+Sometimes programmers take pride in minimizing the amount of instructions, even if the resulting code is hard to understand:
+
+----------------------------------------------------------------------------------------------------------------------------
+
+C++ has two mechanisms for manipulating strings.
+
+The string class
+-Supports character sequences of arbitrary length.
+-Provides convenient operations such as concatenation and string comparison
+
+C strings
+- Provides more primitive level of character handling.
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+The type char is used to store an individual character.
+
+char yes = 'y';
+char no = 'n' ;
+char maybe = '?';
+
+char is single quote, string is double quote.
+
+Some of these characters are true individuals. "characters" you might say.
+
+'\n'
+'\t'
+These are single individual characters. Escape sequence characters.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+'\a' = sound alert
+'\0' = null terminator character of string
+
+'C' 'A' 'T' '\0' 
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+"C strings" is NOT an object of string type.
+"C strings" is an array of chars.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+char* char_pointer = "Harry";
+	// Points to the 'H'
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+char char_array[] = "Harry";
+
+You can modify the characters in the array:
+
+char char_array[] = "Harry";
+char_array[0] = "L";
+
+This will now output "Larry".
+
+The cstdlib header declares a useful function:
+	int atoi(const char s[])
+
+In C:
+
+char* year = "2021";
+int y = atoi(year);
+	y is the interger 2021.
+
+With C++:
+
+string year = "2021";
+int y = atoi(year.c_str());
+	y is the interger 2021.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+You can access individual characters with the [] operator:
+
+string name = "Harry";
+name[3] = 'd';
+
+Outputs "Hardy".
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+The toupper function converts lowercase characters to uppercase.
+
+char ch = toupper('a');
+
+Converts 'a' to 'A'.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Dynamic Memory Allocation
+
+To ask for more memory, for instance a double, you use the new operator:
+
+new double
+
+the runtime system seeks out room for a double on the heap memory, reserves it just for the program and returns a pointer to it.
+
+this double location does not have a name (run-time)
+
+To request a dynamic array you use the same new operator :
+
+new double[n];
+
+You need a pointer variable to hold the pointer you get:
+
+double* account_pointer = new double;
+double* account_array = new double[n];
+
+Now you can use account_array as an array. The magic of array/pointer duality lets you use array notation account_array[i] to access the ith iteration of the array.
+
+When your program no longer needs the memory that you asked for with the new operator, you must return it to the heep using the delete operator for the single
+areas of memory (which you would probably never use anyway)
+
+delete account_pointer;
+
+delete[] account_array;
+
+After you delete a memory block, you can no longer use it.
+
+The OS is very efficient and quick, that storage likely is already being used elsewhere.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+A memory leak happens when you use new to get dynamic memory allocation but you fail to delete it when you are done.
+
+
+
+
+
+
+
+
+

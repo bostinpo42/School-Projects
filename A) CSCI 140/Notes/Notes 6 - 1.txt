@@ -1,0 +1,93 @@
+					Topic 8 Lecture 8
+
+** Question on final regarding creating an exception 
+
+
+Stack exception example if stack is full:
+
+include "stack_full_except.h"
+
+class StackFullException : public std::invalid_argument_error
+{
+	StackFullException() : std::invalid_argument_error("Stack is full!") {}
+};
+
+
+What library to include to get underflow error : #include <stdexcept>
+
+
+	FINAL EXAM (Monday & Wednesday 10:30AM - 1:30PM) REVIEW:
+
+1) Polymorphism ( have a good idea of what polymorphism is, explanation of what it is )
+
+2) Know 3 access modifiers ( public, private, protected ) and how they work with inheritance, especially protected
+	know what level of access they provide, explain the access the provide/restrict
+		all relative, no place for access modifiers outside class description, in terms of data members and functions
+
+3) Exceptions are used to signal something that went wrong, NOT to pass information back and forth
+	Know the base class of a specific exception, look at lecture notes (last page) to see the inheritance chart
+
+4) Exceptions are not used for message passing, but rather signalling that there was an error that happened
+
+5) Try / catch block, try encompasses the code which may have the exception, the catch handles the exception
+	Parameter name is not required in a catch block
+
+6) Describe stack unwinding
+
+7) How to rethrow an exception, especially outside of a catch block
+
+8) The effects of a program terminating before destructors can get rid of instances of an object
+
+9) Noexcept : a way to describe a function that does not throw an exception
+
+10) An exception does NOT need to be thrown from within a class
+
+11) ALL statements that get excecuted from an exception must do so from a function
+
+12) LAB EXAM : writing a project similar to file copy program
+	Absolute path vs. relative path
+		path to a specific item, know how to access with windows
+
+13) File system open with 3 modes : know each kind
+	know how to open files with the bit set binary modes
+
+14) Multianswer : circle what does not belong OR what does belong
+	know certain keywords or reserved words (specific to C++) and case sensitivity
+
+15) Create linked list, (stack program) 
+	pointers in heap, linked list
+
+16) Know the difference between function overriding and function overloading
+
+17) Different types of files : binary file and text file
+	both stored in binary, but distinction is?
+
+18) Use of the const keyword, what each use of the const keyword means
+	function itself being const in the definition
+		function cannot be called if it is const unless the object itself is also const 
+
+19) :: operator, namespace resolution / member resolution, how the :: operator is used
+
+20) Questions about pointers, know about reference variables as well
+
+21) Write an exception class, maybe choose a class to inherit from for this exception, for a specific scenario
+
+22) Question about number systems, convert a signed int to a binary value
+	must have a specified number of bits for conversion
+		convert an unsigned value, convert to hex
+
+23) know rand for lab exam, byte compared to int/short/etc
+	might be replicating an algorithm
+		might be writing a class (1 header & cpp) : know how to compile multiple files
+			user input, not just string, know how to take a double, know input validation 
+
+
+
+
+
+
+
+
+
+
+

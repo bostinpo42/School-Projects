@@ -1,0 +1,28 @@
+			4A Arrays and Vectors
+
+Vectors are a data structure that can be changed dynamically in size during runtime
+
+When the vector is declared to the stack it stays static in size, when the vector needs to resize itself
+it uses a pointer to dynamically allocate more memory from the heap. The vector essentially points to new arrays
+created in the heap in order to change its size.
+
+
+We can use .push_back() to change the vector and add values to the end of the vector.
+	.emplace_back() will also do the same.
+
+We can also use .at to check for the boundaries of vectors or arrays (IMPORTANT, EXAM)
+
+	Reference Variables
+
+When declaring a reference variable, we should keep in mind that the reference variable is actually just an alias
+to what it is referring to, therefore we cannot change the reference variable. What we can change, however, is what
+the reference variable is referring to.
+
+ex. 
+
+int a{20};
+int c{20};
+int& b{a};
+
+b = c;		This actually changes the value of a to the value of c. b is an alias for a.
+

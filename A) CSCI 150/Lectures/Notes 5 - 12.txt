@@ -1,0 +1,112 @@
+				Topic 9 Lecture 9A Strings and Arrays
+
+C-string : array of characters which forms a string
+
+Example:
+	[G] [o] [o] [d] [b] [y] [e] [0/NUL]
+	Strings are always terminated by a NUL character
+
+
+	char array[5]; if the user inputs 10 characters, the output will be the first 4 characters with a NUL terminator.
+
+CISC - Complex Instruction Set Computer, instructions and hardware are more complex, easier for programmer 
+RISC - Reduced Instruction Set Computer, instructions and hardware is more simple, programmer is more responsible
+	
+
+String Instructions
+
+MOVSB - move a string of bytes, increments by 1 bytes
+MOVSW - move a string of words, increments by 2 bytes
+MOVSD - move a string of double words, increments by 4 bytes
+
+Using these MOV operations will only copy the first element by default. To MOV multiple elements we must specify so using the REP prefix, shown below.
+
+These instructions are also not exclusive to only strings, they would also work with any value, for example integers.
+
+These move instructions copy data from the memory location pointed by ESI to the memory location pointed to by EDI (increments ESI and EDI addresses for each element)
+Stored String - ESI
+Destination - EDI
+Size of string - ESX
+
+The Direction flag controls the incrementing of ESI and EDI
+	DF = clear(0): increment ESI and EDI
+	DF = set(1): decrement ESI and EDI
+
+The Direction flag can also be changed using CLD and STD:
+	CLD ; clear direction flag
+	STD ; set direction flag
+
+Using a Repeat Prefix:
+	REP can be inserted just before MOVSB, MOVSW, MOVSD
+	ECX will control the number of repetitions
+	This is useful for copying a specific amount of elements of an array from the source to target
+
+Using MOVSD to delete the first element of an array:
+	array DWORD 1,1,2,3,4,5,6,7,8,9,10
+
+	section .data
+		array: dd 1,1,2,3,4,5,6,7,8,9,10
+		len: equ ($ - array) / 4
+	section .text
+		cld
+		mov ecx, len - 1
+		lea esi, [array+4]
+		mov edi, array
+		rep movsd
+
+Comparing Arrays
+
+CMPSB, CMPSW, CMPSD each compare a memory operand pointed to by ESI to a memory operand pointed to by EDI
+	We can use REP to repeat the comparison while iterating through the array
+		REPE (repeat if equal, REPZ)
+		REPNE (repeat if not equal, REPNZ)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

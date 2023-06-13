@@ -1,0 +1,62 @@
+3B Functions and an intro to Recursion
+
+Scope - 3 different kinds: Scope - Lifetime of a variable and its visibility
+
+	Global Scope - available to the entire program
+
+	Translation Unit Scope - aka compilation scope, strictly restricted to a .cpp file
+
+	Block Level Scope - within a block, without control statement, or function
+
+Memory
+
+Stack - when main() gets called a stack block is created for it.						void A(int a, int b)
+		main will push b, then a into the stack when it gets called					{
+after a function is called, its address then points to text and the function is deleted from the heap
+Heap														int x, y;
+														}
+BSS
+
+Data
+
+Text
+
+The stack has these operations: 
+	push : adds value to the stack
+	pop : removes value from the stack
+	peak : returns value on top of the stack
+	isEmpty : returns true if stack is empty and false otherwise
+
+
+The signature of a function has nothing to do with its return type.
+
+Formal Parameters are the variables which the function has to take in for the function call
+
+int sum(int = 10; int = 20);
+	------------------ : Formal parameters
+
+
+When a function gets called, the variables that are being passed through the function call are the Actual Parameters
+
+sum(x, y);
+    ------ : Actual Parameters
+
+The argument is the value being passed through the function.
+
+int x{10}; Both are arguments which get passed through the function
+int y{20};
+
+
+Factorial (n!)
+
+fact(n)
+	n*(n-1)*(n-2)*(n-3)......
+
+
+Every recursive function needs a case K where it can no longer call itself
+
+Memoization : storing the value of a function call to use later on to further optimize code
+
+Loops always outperform recursion
+
+

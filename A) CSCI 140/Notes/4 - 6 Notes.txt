@@ -1,0 +1,84 @@
+			4A Arrays
+
+Whenever we declare an array there will be contiguous space reserved for the array in the stack.
+
+int array[5]
+
+Assume an int is 4 bytes, this array will reserve 20 bytes in the stack.
+
+To access the third element of this array:
+
+int val{array[2]};
+
+In array[2] the 2 would be known as the subscript.
+
+To the compiler, this command would look like so:
+
+array + sizeof(int) * 2
+
+Loading things into the stack will often provide the best performance, as they will also be loaded into cache memory,
+resulting in few, if any cache misses.
+
+When declaring an array we do not need to specify the size of the array, but we must provide an initialization list:
+
+int array[] { 1, 4, 8, 5, 16 };
+
+This is because arrays are fixed in size. We will learn about pointers which can vary in size.
+
+If we declare an array and do not initialize it, the elements will be filled with random numbers from memory
+
+Arrays are automatically passed by reference in functions
+
+--------------------------------------------------------------------------------------------------------------------------
+
+			Multi-Dimensional Arrays
+
+When initializing a 2d array, one of the dimensions must be given a specified size.
+
+int array2d[5][6];
+
+In memory, this array would appear as one dimensional, so it would only allocate 20 bytes assuming int is 4 bytes.
+
+[5] would be the number of rows
+[6] would be the column of columns
+
+int array2d[2][5]{1, 2, 3, 4, 5} {6, 7, 8, 9, 10}; 
+The compiler knows how to initialize the array, so they do not need to be initialized in the same line or even in the same curly braces.
+
+-------------------------------------------------------------------------------------------------------------------------
+
+			Arrays of Arrays
+Declaring a 2d array with standard arrays
+
+std::array<std::array<int, 5>, 2> array2d;
+		     <int, 5> - type of element
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Bitmask - masking specific  bits from being revealed
+
+5 - 0101 & 0001 = 0001
+	In this case the 0001 is the mask, because when we and(&) 0001 with 0101 the only thing we retain is the least significant bit
+5 % 2 = 1; 2 would be the mask
+
+Lab Note --
+To look at last digit, divide by 10
+To get the rest of the digits, modulo by 10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

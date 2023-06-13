@@ -1,0 +1,13 @@
+					5A Classes Cont.
+
+
+We should program our code in a way such that it is loosely coupled
+	This allows for extensability, without the need for recompilation or extensive changes to the code
+		Our code should be cohesive: the property of a class to be focused (not necessarily generalized), the class should have a specific purpose
+			Alterations to a classes should not change how it works intrinsically
+
+
+
+
+When looking at the size of an object in memory, look at the data members of the class to determine the size.
+

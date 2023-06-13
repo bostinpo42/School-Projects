@@ -1,0 +1,25 @@
+Topic 11 Sets and Selection
+
+Sets typically use iterators so that we can iterate through the collection. 
+    Iterators always have 2 functions: begin() and end().
+    begin() returns a pointer to the beginning of the collection, ex. the first element of an array.
+    end() returns a a pointer to the element beyond the array, so nullptr, but after the collection.
+
+We usually override relational operators for our iterator, so that we can compare elements of the collection to eachother.
+
+Selection
+
+Prune and search essentially uses partitionining similar to quicksort in order to find specific element in our collection.
+    We can create 3 different sets to do so:
+    lower - set of values lower in rank than the kth smallest value
+    equal - set of values equal in rank to the kth smallest value
+    greater - set of values greater in rank than the kth smallest value
+
+Trie
+    stands for retrieval
+    either implemented with arrays, n-ary tree
+    dimension of the tree is based on the size of the alphabet
+    in n-ary tree, n = size of alphabet.
+    a-z, 26 characters
+    for c in alphabet, c - 'a' will give us subscript 0. 'b' will give subscript 1, 'c' will give 2, and so on.
+    

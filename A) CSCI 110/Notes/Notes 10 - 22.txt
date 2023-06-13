@@ -1,0 +1,116 @@
+Midterm - November 5th CHAPTER 5 ONLY
+----------------------------------------
+
+Chapter 5 Functions
+
+-------------------------------------------------
+
+int main ()
+{
+	double z = pow(2,3);
+
+	//display result of calculation
+	// stored in variable z
+	cout << z << endl;
+
+	// return from main - no output here
+	return 0;
+}
+
+--------------------------------------------------
+
+Black Box concept : Internals of function is not known
+	"You can't see inside, but you know what it does"
+		You dont need to know how it works, you just need to know its specification
+
+White Box concept : Internals of function is known
+
+---------------------------------------------------
+
+When writing functions, you need to pick a good, descriptive name for the function
+
+ex. "cube_volume"
+
+Give a type and name for each parameter, one parameter for each piece of information that the function needs to do its job
+
+Specify the return type
+
+	double cube_volume(double side_length)
+
+----------------------------------------------------
+
+function names must be in a block:
+
+double cube_volume(double side_length)
+{
+	double volume = side_length * side_length * side_length;
+	return volume;
+}
+
+Variable used must also use the same return data type, above, we must use double because we used double for the function data type.
+
+----------------------------------------------------
+
+When writing a function you should add comments to :
+
+- explain the purpose of the function
+- explain the meaning of the parameters
+-state what value is returned
+-state any special requirements
+
+Not for the compiler, but for other people so they understand how the function works
+
+----------------------------------------------------
+
+When a function is called : a parameter variable is created for each value passed in.
+
+	int hours = read_value_between(1, 12);
+	int read_value_between(int low, int high);
+
+Each parameter variable is initialized within the corresponding parameter from the value call
+
+-------------------------------------------------------
+
+The return statement yields the function result.
+
+This can be used to handle unusual cases.
+What should we do if the side length is negative?
+We choose to return a 0 and not do any calculations.
+
+double cube_volume(double side_length)
+{
+	if (side_length < 0) return 0;
+	double volume = side_length * side_length * side_length;
+	return volume;
+}
+
+Return can return the value of any expression
+	
+	return side_length * side_length * side_length;
+
+Your function always needs to return something.
+
+Consider putting in a guard against negatives and also trying to eliminate the local variable:
+
+double cube_volume(double side_length)
+{
+	if (side_length >= 0)
+	{
+		return side_length * side_length * side_length;
+	}
+}
+
+There is a missing return value, the function will not work
+
+----------------------------------------------------------
+
+Functions without return values : void
+
+	return;
+
+Try not to be redundant with coding, if two components can be combined into a function, combine them and simplify the program
+
+-----------------------------------------------------------
+
+Stepwise refinement : To solve difficult tasks, break it down into smaller, simpler tasks until you are left with tasks that you know how to solve
+

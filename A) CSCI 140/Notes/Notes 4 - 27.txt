@@ -1,0 +1,35 @@
+				Lecture 5 Classes Cont.
+
+
+	UML for classes:
+
+		Account
+		
+    Data members :
+
+	name : string
+	balance : double
+	log : vector<string>
+
+    Member functions:
+
+	+getName() : string
+	+setName(string) : void
+	+getBalance() : double
+	+setBalance(double) : void
+	+getEvents() : string
+
+
+	Interface :
+		list of all public members
+
+To compile more than one .cpp file in a directory and run: 
+							g++ -o filename.exe *.cpp
+							./filename.exe
+To compile a specific amount of .cpp files and object files:
+							g++ -o filename.exe filename.cpp filename.o
+To create an object file : 
+			g++ -c filename.cpp
+
+To modify VSCode to compile multiple .cpp files in a directory:
+		Under "args": "${filename}" -> change to "${fileDirname]\\**.cpp"

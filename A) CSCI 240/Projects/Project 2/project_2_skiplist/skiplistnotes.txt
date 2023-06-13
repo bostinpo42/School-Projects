@@ -1,0 +1,6 @@
+
+
+When searching we should use a temp vector to iterate through the search so that we dont affect the vector itself.
+
+We should return a vector of pointers for search, using a vector of pointers allows us to know where at each level the search left off, giving us the item less or 
+    greater than our term at each level

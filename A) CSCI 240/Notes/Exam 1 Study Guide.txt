@@ -1,0 +1,65 @@
+C++: Object oriented programming, inheritence, pure virtual functions and abstract classes, interfaces
+
+Object-oriented programming: programming paradigm focused on utilizing C++'s classes and inheritence.
+
+Inheritence: We can inherit the members and functions of another class by including it in the class's definition, there are 3 different levels of inheritence
+Public, Private, and Protected. By default class members are private, we can specify private, protected and public members of the class. The important thing to
+remember about inheritence is that regardless of the levels of inheritence, private and protected members will remain private or protected, respectively. Only the public members
+of the base class get affected in terms of inheritence, so when we declare public inheritence, public will remain public, if we declare private inheritence, public will become
+private in the derived class, and if we declare protected, then public will become protected.
+
+Pure virtual functions & abstract classes: In C++ we can make a class abstract by declaring a pure virtual function. This can be done by adding 'virtual' at the front of a 
+function's prototype and setting that function equal to 0. By doing so we make the class abstract, meaning no instances of the base abstract class can be created. We must then
+define all of the virtual functions declared in our abstract class. Often time the abstract class is called the interface.
+
+Interface: We often call the base abstract class the interface, it should contain only what is required and should not be changed. The only thing that should be modified is our 
+own implementation of the interface.
+
+
+Collections: bag collection, stack collection, queue collection, deque(array or linked list), linked lists and nodes
+
+Bag: 
+
+Stack: Push pop peek clear empty
+
+Queue:
+
+Deque: (linked list, what it would look like, double linked, circular, etc), should be implemented with double linked list
+	traverse the linked list in both directions, head and tail, front(prev = null), back(next = null)
+	Operations: addFront, addBack, Front, Back, clear, removeFront, removeBack, empty
+	Can be implemented as a queue or a stack.
+
+tree - nodes going down but cannot go back up
+
+arity - the number of connections in a single node
+
+Linked list:
+
+Node:
+
+
+Downsides of using an array: requires a size, resizing the array requires it to be copied 
+
+Benefits of using an array: do not need to traverse the array to get to a specific number.
+
+
+
+Running Memory:
+Stack - function data, activation records
+Heap - contains dynamically allocated memory, i.e nodes of linked list strewn across memory,
+BSS - block starting symbol, contains uninitialized variables
+Data - contains initialized variables
+Text - contains all the instructions of our program
+
+Cache miss: if memory is not stored contiguously in memory then it will be expensive as multiple cycles of memory have to be loaded in order for our program to run.
+Which is why traversing a linked list can be expensive in terms of memory.
+
+Memory miss: we want our memory to be local and close together (spacial locality) so that memory can be loaded effectively and efficiently in our program.
+
+Allocated memory gets re-used, because if a piece of memory becomes available, rather than shifting things around in memory to make space, we instead just utilize 
+the free space as seen fit.
+
+
+
+Bitwise Shift, And/OR
+

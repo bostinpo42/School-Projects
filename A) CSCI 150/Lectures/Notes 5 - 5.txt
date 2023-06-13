@@ -1,0 +1,64 @@
+				Topic 8 Lecture 8b Advanced Procedures, Recursion
+
+Binary Search Algorithm:
+	Requirement : The array must be sorted
+
+
+[0], [1], [2], [3], [4], [5], [6], [7]
+-2 , 10 , 11 , 22 , 25 , 50 , 53 , 68
+
+We must divide the array in half for binary search. To do this we add the first subscript by the last subscript
+then divide it by two to get the middle element. ([0] + [7]) / 2 = 3.
+
+Mid points to subscript [3]. The value we will be searching for is 10. 
+
+C (log[2](n))
+
+We compare the mid value to the value we are searching for, evaluating if it IS the value we are searching for. If it is not, then
+we check to see if it is less than or greater than the value we're searching for. In this case [3] is greater than the value we
+are searching for so we will search the first half of the array by once again getting the middle of the first half of the array.
+
+([0] + [2]) / 2 = 1.
+
+Mid points to subscript [1]. The value in [1] is 10, the value we are searching for.
+
+int binSearch (int array, int start, int end, int term) {
+	if (start > end) { return -1; }
+	int mid = (start + end) / 2
+	if (array[mid] == term) { return mid; )
+	if (array[mid] < term) { return binSearch(array, mid + 1, end, term); }
+	return binSearch(array, start, mid - 1, term);
+}
+
+A recursive procedure is a procedure which calls itself. 
+
+
+EXAM 5/10/2022
+
+1) Know how to setup stack frame for a procedure call
+	know how to remove stack frame
+		how to reference local variables and registers being called to procedures
+			how to get rid of local variables using ESP
+
+2) Know difference between mul and imul, div and idiv and also the operands and results in terms of what registers
+	are being used and stored as the result for each different operations (8 bit, 16 bit, 32 bit)
+		
+3) Know different arithmetic operations and how they work such as shift left, rotate, etc.
+
+4) working with base pointer and stack frame with procedures, working with stack frame for procedure
+	know local variables are relative to stack pointer and not base pointer
+		know how the number of arguments relate to the offset and size of stack pointer
+
+5) 4 atomic flow control structures (if, if else, while, do while)
+
+
+
+
+
+
+
+
+
+
+
+

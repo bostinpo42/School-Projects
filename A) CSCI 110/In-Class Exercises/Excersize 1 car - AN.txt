@@ -1,0 +1,76 @@
+// CSCI-Excersize_1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+/*
+Prolog
+a.Program Description: 
+b.Author: Austin Ngo
+c.Input variables: 
+d.Process Flow: 
+e.Output variables:
+*/
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	const float YEARS = 10;
+	const float PRICE_FUEL = 4;
+	const float MILES_DRIVEN = 15000;
+	float cost1;
+	float cost2;
+	float mpg1;
+	float mpg2;
+	float maintenance1;
+	float maintenance2;
+	float insurance1;
+	float insurance2;
+	float total_cost_1;
+	float total_cost_2;
+	float annual_fuel_consumed1;
+	float annual_fuel_consumed2;
+	float annual_fuel_cost1;
+	float annual_fuel_cost2;
+	float operating_cost1;
+	float operating_cost2;
+	cout << "Please enter the price of the first car ";
+	cin >> cost1;
+	cout << "Please enter the fuel efficiency of the first car ";
+	cin >> mpg1;
+	cout << "Please enter the price of maintenance for the first car ";
+	cin >> maintenance1;
+	cout << "Please enter the cost of insurance for the first car ";
+	cin >> insurance1;
+	cout << "Please enter the price of the second car ";
+	cin >> cost2;
+	cout << "Please enter the fuel efficiency of the second car ";
+	cin >> mpg2;
+	cout << "Please enter the price of maintenance for the second car ";
+	cin >> maintenance2;
+	cout << "Please enter the cost of insurance for the first car ";
+	cin >> insurance2;
+	annual_fuel_consumed1 = MILES_DRIVEN / mpg1;
+	annual_fuel_consumed2 = MILES_DRIVEN / mpg2;
+	annual_fuel_cost1 = PRICE_FUEL * annual_fuel_consumed1;
+	annual_fuel_cost2 = PRICE_FUEL * annual_fuel_consumed2;
+	operating_cost1 = annual_fuel_cost1 * YEARS + maintenance1 + insurance1;
+	operating_cost2 = annual_fuel_cost2 * YEARS + maintenance2 + insurance2;
+	total_cost_1 = cost1 + operating_cost1;
+	total_cost_2 = cost2 + operating_cost2;
+	if (total_cost_1 < total_cost_2)
+	{
+		cout << fixed << setprecision(2);
+		cout << "The first car is the better buy because has a total cost of $" << total_cost_1 << endl;
+		cout << "The second car has a total cost of $" << total_cost_2 << endl;
+	}
+	else
+	{
+		cout << fixed << setprecision(2);
+		cout << "The second car is the better buy because it has a total cost of $" << total_cost_2 << endl;
+		cout << "The first car has a total cost of $" << total_cost_1 << endl;
+	}
+	return 0;
+}

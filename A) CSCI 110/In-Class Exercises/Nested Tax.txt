@@ -1,0 +1,61 @@
+
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <cstdlib>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	string status;
+	float tax_rate1 = 0.1;
+	float tax_rate2 = 0.25;
+	float limit1 = 32000;
+	float limit2 = 64000;
+	float income;
+	float single_tax1;
+	float single_tax2;
+	float married_tax1;
+	float married_tax2;
+	const float base_tax1 = 3200;
+	const float base_tax2 = 6400;
+
+	cout << "Please enter your marital status. (s if single, m if married): " << endl;
+	cin >> status;
+	cout << "Please enter your income in USD. " << endl;
+	cin >> income;
+	if (status == "s")
+	{
+		if (income <= limit1)
+		{
+			single_tax1 = income * tax_rate1;
+			cout << "Your income tax is $" << single_tax1;
+		}
+		else
+		{
+			single_tax2 = (income - limit1) * tax_rate2 + base_tax1;
+			cout << "Your income tax is $" << single_tax2;
+		}
+	}
+	else
+	{
+		if (income <= limit2)
+		{
+			married_tax1 = income * tax_rate1;
+			cout << "Your income tax is " << married_tax1;
+		}
+		else
+		{
+			married_tax2 = (income - limit2) * tax_rate2 + base_tax2;
+			cout << "Your income tax is " << married_tax2;
+		}
+	}
+	return 0;
+}
+
+
+
+

@@ -1,0 +1,12 @@
+for(int i = 0; i < n; ++i) {
+	if(array[i] == term;
+	return i;
+}
+
+The worst case scenario when searching through an array would be N operations,  N is also the size of the array. 
+
+If time were constant C, in the worst case it would take C(N) time to search through the array.
+
+If we were to use binary search on the array, then the worst case would be Clog2(n).
+
+

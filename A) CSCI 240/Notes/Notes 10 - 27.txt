@@ -1,0 +1,48 @@
+Topic 8 Sorting, Sets and Selection
+
+Sorting
+
+    Iterative Sorting
+    -----------------
+
+    Bubble Sort
+    Bubble sort will continue swapping, giving O(n^2) operations, even at its best case. 
+        Even with the array sorted bubble sort will still give O(n^2) operations.
+
+    Selection Sort
+    Search for the minimum or maximum value, swap the value in the first subscript with the found value.
+    The sorted portion of the array will be the first subscripts, we then continue searching for the next highest value and put it in the 2nd subscript.
+    Complexity of Selection sort is O(n) best case, but usually also O(n^2).
+
+    Insertion Sort
+    We will assume the first or last element in the array is already sorted. We iterate through the array and move values accordingly to which order we wish to sort the array.
+    Insertion sort will in the worst case be O(n^2).
+
+    Divide and Conquer
+    ------------------
+
+    Merge Sort
+    We take the number of elements in our array and divide it by 2. That gives us a halfway point.
+    We recursively call on each half of the array, dividing each half of the array once again in half.
+    We recursively call on each split of the array until the array is divided into individual elements.
+    To merge the elements together we need another array using the returned values from the recursive calls.
+        When we merge the elements together we will put them into the proper order.
+
+    Merge sort's best case is O(n) operations, as each element in the array still needs to be processed, but its worst case is n(logn) operations.
+
+    Quick Sort
+    We select a random pivot. Anything less than the pivot is put into the left of the pivot, and anything larger than the pivot is put to the right.
+    The pivot will now be considered sorted.
+    For the left and right side of the array we will use the last element as the pivot for each. We put anything smaller to the left, and larger to the right. This pivot is now sorted.
+    We continue selecting pivots and rearranging until the array is sorted.
+    Worst case n(log n).
+
+
+    Bucket and Radix Sort
+    ---------------------
+
+    Radix - base of number system (binary, 2, hex, 16, octal 8).
+    We order elements based on their least significant digit.
+
+    We then process the array again, working with the 2nd digit in the collection.
+    

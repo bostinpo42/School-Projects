@@ -1,0 +1,59 @@
+Topic 9 Cont. Dynamic Programming
+
+Strings cont.
+
+    In ASCII there are 128 symbols, as only 7 bits are used as symbols, because ASCII uses signed integer values.
+
+    Set of DNA {A, C, T, G}
+
+    Substring vs Subsequence
+        Substring - ordering of elements is necessary (to form words, etc.)
+        Subsequence - ordering of elements is not necessary
+
+    String S = {A, C, T, A, G, A, T}
+    String T = {A, T, G, A, C, G, T}
+
+    Finding the longest Subsequence
+        We are trying to find the longest subsequence (in which left to right order is necessary, but does not need to be contiguous). 
+        Subsequence - {A, T, A, G, T}
+
+    Let S1 = s.substring(size(s) - 1)  //reduce size of S by 1.
+
+    LCS(string S, string T) {
+        if(|sizeof(S)| or |sizeof(T)| = 0) return 0
+
+        if(s.back() = t.back()) return 1 + lcs(S1, T1);
+
+        return max(LCS(S1, T) or LCS(S, T1)) // we return the max between the two recursive calls
+
+        return number of symbols in longest subsequence    
+    }
+
+String Compression
+    Set of Letters - {A, B, C, D, E}
+    String S - {A B C B C A D E E A B B C D E}
+    |S| = 15
+    |set| = 5
+
+
+    Hoffman Coding Algorithm - lossless compression algorithm
+    We order the set in ascending order
+    B = 2
+    D = 2
+    C = 3
+    A = 4
+    E = 5
+    We take the two lowest cost pairs and join them to a common ancestor. 
+    We combine B and D, making them 4.
+    We combine 4 and 3, making them 7.
+    We combine 4 and 5, making them 9.
+    We combine 7 and 9, making them 16.
+    The path to the left child is 0, the path to the right child is 1.
+    The path that it takes to reach a specific character will be the bits required to map that character.
+    Ex. to get to B, we would need to traverse 000. B is now mapped to 000.    
+    Encode tree for hca.
+
+
+    Fixed-Sized Compression
+    bits = |S| * log2(|set|) + 55 bits
+    bits = 15 * 3 + 55 = 100 bits

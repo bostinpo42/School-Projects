@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <cstdlib> 
+#include <iomanip>
+using namespace std;
+int main()
+{
+    string grade;
+    char letter, symbol;
+    float score;
+    cout << "Please enter your grade ";
+    cin >> grade;
+    letter = grade[0]; 
+    symbol = grade[1]; 
+    switch (letter)
+    {
+    case 'A': score = 4.0; break;
+    case 'a': score = 4.0; break;
+    case 'B': score = 3.0; break;
+    case 'b': score = 3.0; break;
+    case 'C': score = 2.0; break;
+    case 'c': score = 2.0; break;
+    case 'D': score = 1.0; break;
+    case 'd': score = 1.0; break;
+    case 'F': score = 0.0; break;
+    case 'f': score = 0.0; break;
+    default: cout << "Wrong input. Please enter a letter grade and symbol." << endl; break;
+    }
+    if (score !=0)
+    {
+        if (symbol == '+' && score != 4.0)
+        {
+            score += 0.3;
+        }
+        if (symbol == '-')
+        {
+            score -= 0.3;
+        }
+    }
+        cout << "The numeric value of your grade is " << score << "." << endl;
+}

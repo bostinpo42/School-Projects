@@ -1,0 +1,21 @@
+				Topic 7 Lecture 7b Stream I/O & File Processing
+
+cd = change directory
+dir = directory
+mkdir = make directory
+rm filename = remove filename
+
+Absolute Path : starts from root directory, starts with \
+
+Relative Path : relative to current location, usually starts with .
+
+A table is a collection of the same type of records, which themselves are collections of fields of the same type
+
+Capacity:
+2^10 KB 1024 bytes
+2^20 MB 1024^2 bytes
+2^30 GB 1024^3 bytes
+2^40 TB 1024^4 bytes
+
+
+

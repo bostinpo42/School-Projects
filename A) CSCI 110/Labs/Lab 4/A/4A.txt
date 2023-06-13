@@ -1,0 +1,97 @@
+/*
+a. Program Description : This program takes two user input arrays and compares them.
+b. Author : Austin Ngo
+c. Input variables : a, b
+d. Process Flow : User inputs array sizes and the values of the array, then the program compares them and outputs the result.
+e. Output variables : a, b
+*/
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <cstdlib> 
+#include <iomanip>
+#include <math.h>
+#include <algorithm>
+
+using namespace std;
+
+
+bool equals(int a[], int a_size, int b[], int b_size)
+{
+    if (a_size != b_size)
+        return false;
+
+    for (int i = 0; i < a_size; i++)
+    {
+        if (a[i] != b[i])
+            return false;
+    }
+
+    return true;
+}
+
+int main()
+{
+    cout << "Please enter two arrays that are identical." << endl;
+    cout << "Please enter the size of the first array: " << endl;
+
+    int current_size_a;
+    cin >> current_size_a;
+
+    cout << "Please enter the " << current_size_a << " elements of the first array." << endl;
+
+    int a[20];
+    int b[20];
+    int i;
+
+    for (i = 0; i < current_size_a; i++) 
+    {
+        cin >> a[i];
+    }
+
+    cout << "Please enter size of the second array: " << endl;
+
+    int current_size_b;
+    cin >> current_size_b;
+
+    cout << "Please enter the " << current_size_b << " elements of the second array." << endl;
+
+    for (i = 0; i < current_size_b; i++) 
+    {
+        cin >> b[i];
+    }
+
+    if (equals(a, current_size_a, b, current_size_b))
+        cout << "Both arrays are same. " << endl;
+    else
+        cout << "Two arrays are different. " << endl;
+
+    cout << "Please enter two arrays that are different: " << endl;
+    cout << "Please enter size of the first array: " << endl;
+
+
+    cin >> current_size_a;
+    cout << "Please enter " << current_size_a << " elements of the first array." << endl;
+
+    for (i = 0; i < current_size_a; i++) 
+    {
+        cin >> a[i];
+    }
+
+    cout << "Please enter size of the second array: " << endl;
+    cin >> current_size_b;
+
+    cout << "Please enter " << current_size_b << " elements of the second array." << endl;
+
+    for (i = 0; i < current_size_b; i++) 
+    {
+        cin >> b[i];
+    }
+
+
+    if (equals(a, current_size_a, b, current_size_b))
+        cout << "Both arrays are same. " << endl;
+    else
+        cout << "Two arrays are different. " << endl;
+    return 0;
+}

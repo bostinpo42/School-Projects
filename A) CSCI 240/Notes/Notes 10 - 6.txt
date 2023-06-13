@@ -1,0 +1,55 @@
+Time Complexity of heapify function
+
+nh = # of nodes at h = ceil( n / 2^ h)
+	# of levels = log2(n)
+
+nh * O(h) 
+
+summation(h = 1, log2(n)) | (n/ 2^ h) * O(h) = n * summation(h = 1, log2(h)) | (h/ 2^h) * O(h)
+
+The sum of this geometric series, given it goes to infinity, would be 2n.
+	1/2^1 + 2/2^2 + 3/2^3 + 4/2^4.... 
+
+HeapSort
+	heap-> maxheap or minheap form
+
+HeapSort worst case : Time complexity: O(n*log(n)), Space Complexity: O(1)
+
+----------------------------------------------------------------------------------------------------------
+
+Hashing - used to increase performance of a collection
+	typically uses an array for storage
+	nonlinear, we don't iterate over elements
+	unordered collection
+
+K = unique key
+
+Map - ADT used in hashing
+	size(): returns # of items stored
+	empty(): returns true if 0 items are stored in the map, false otherwise
+	put(k, v): adds (k, v) to the map
+	find(k): finds and returns k
+	erase(k): removes (k, v) for v 
+
+Hashmap/hashtable: a map(or table) that provides O(1) complexity on almost all operations
+
+a hash function , h, is a one-way function that takes an input and generates an almost unique integer value
+
+given h(k) = K1
+	there is no function h1(k1) = k; we cannot use derivatives or anti-derivates to find k.
+
+h { h1: converts an item to an integer }
+  { h2: compress h1k into an integer value within a certain range }
+	such that h1(k1) != h1(k2)
+
+	int k{...}
+	h1(k) = hash
+	h = h2(h1(h)) =  subscript for array
+
+	in general we refer to the array which holds our hashmap as a bucket.
+		we typically dont want a bucket ordered, as it ruins performance
+	
+h2 : Compression
+	returns |h1(k)| mod n;
+	return h1(k) & 0x7FFFFFFF % n;
+

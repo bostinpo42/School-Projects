@@ -1,0 +1,55 @@
+	Debugger Notes
+
+nasm -f elf -g [filename.asm] && ld -m elf_i386 [objectfilename.o] -o [filename for executable] && gdb [executable name]
+assembles object file		links object file			builds executable		runs debugger
+
+
+br [line/section] - gives breakpoint for debugger
+info reg - gives register information
+layout regs - opens register table
+si (step instruction) - moves to the next instruction in the debugger / steps through program
+
+eip - instruction pointer - holds address of next instruction to execute 
+
+a loop always decrements ecx, if ecx is set to 0 then when after the loop decrements it will check to see if ecx was zero, then
+it will jump to the first line in the section. if using a loop ALWAYS set a value for ECX
+
+strings are stored as consecutive characters in addresses
+
+O
+L
+L
+E
+H
+
+------------------------------- Lecture --------------------------------------
+
+When working with signed values, watch for a carry flag
+When working with unsigned values, look for overflow flag
+
+				Exam #1 3/29
+
+Know what each flag represents (sign flag, zero flag, carry flag, and overflow flag)
+
+Number systems (binary decimal, hexadecimal) Given values, size of data, and sign/unsigned : return number of bits, etc.
+	Given a value, find binary first and then find hex value AFTER binary.	
+	addition and subtraction of decimal values , may ask for the sum in hexadecimal
+
+4 Stages of Compilation - Understand commands and what is being created
+
+Format of running program in memory - each section and what they represent (5 different areas in memory)
+
+Layout of processor 
+
+Levels of language - from machine code to L3 (Higher level) L1 - Assembly/Machine , L2 - Instruction Set (Can be translated into L1)
+	Translation vs Interpretation
+
+Steps of CPU (fetch, decode, execute) - decode has a few steps itself, know which addresses are being fetched from
+	4 General purpose registers which are themselves broken up (eax, ebx, ecx, etc.)
+
+Questions about NASM, linking, and execution through gdb.
+
+How a string is stored within memory
+
+
+

@@ -1,0 +1,33 @@
+Skip Lists - sequence of add operations, with a limit on levels, manually insert nodes by hand.
+    know how to do each operation in the Skip List, insert, search, delete.
+        know how to do each operation, step by step.
+
+Hash tables - hash function is a composite function, h1 has to do with the kv pair in the hash table, h2 has to do with the table itself
+    h1 comes from the client, h2 is hard coded into the client, based on what the client has input.
+
+KV pairs, we need to understand how KV pairs can be utilized in our various data structures.
+
+Dictionary uses KV pairs, uses keys to look up values. Keys are unique.
+
+Quadratic probing, linear probing, understand how it works and how to explain it.
+
+Different techniques of creating h1 based on known data types. 
+    Conceptual: given a data type how would you generate h1 for that type (one example is horner's method, hashcode for string)
+
+Hash tables: 
+    Bucket array: can potentially hold more than one value
+    Determine whether or not we grow the data storage, particular term used (reference notes)
+
+hash table and map are the same structure, but different application.
+
+Priority Queues - Heap data structure, describe upheap or downheap, various functions and how they work.
+    describe a heap in general, how it works etc.
+
+How to pass in a function as lambda into a constructor of an object.
+
+Trees - tree terminology, how to calculate height of a node, how to determine how many nodes on a level, if the tree is complete or full, etc.
+    tree traversals, different methods
+
+Might be a question to calculate time complexity of an Algorithm.
+
+Remember which ADTs had size (not queue, not stack)

@@ -1,0 +1,25 @@
+		Lecture 3A - Functions and an Introduction to Recursion
+
+Functions have a single responsibility
+
+SOLID - (not on exam, remember single-responsibility principle)
+Single-Responsibility Principle
+Open-Close Principle
+Liskov Substitution Princple 
+Interface Segregation Principle
+Dependency Inversion Principle
+
+	Function Prototypes
+Prototypes do not require function names, a function prototype is made for the compiler to tell it that there will be a function with its given name in the program.
+
+The signature of a function is the identifier, the number of parameters, and the order of the types of parameters.
+
+	Translation Unit
+
+A translation unit is a single unit of code that the computer can compile into an object file
+	- has a scope of its own
+
+	Random Number Generation
+
+When using a RNG, ensure to not seed it in a loop, only seed the RNG once at the beginning prior to the call of the RNG.
+

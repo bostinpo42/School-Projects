@@ -1,0 +1,46 @@
+
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <cstdlib>
+#include <string>
+
+using namespace std;
+
+char grade_function()
+{
+    char grade;
+    cout << "Please enter your grade ( A, B, C, D, F): ";
+    cin >> grade;
+    return grade;
+}
+void main()
+{
+    char LetterGrade = 'C';
+    bool flag = true;
+    string answer = "";
+    while (flag)
+    {
+        LetterGrade = grade_function();
+        switch (LetterGrade)
+        {
+        case 'A':   cout << "Great job!\n"; break;
+        case 'B':   cout << "Almost perfect\n"; break;
+        case 'C':   cout << "You're improving\n"; break;
+        case 'D':   cout << "You can do better\n"; break;
+        case 'F':   cout << "Not so good\nyou need to see me\n"; break;
+        default:    cout << "you did not hand in your assignment\n"; break;
+        }
+        cout << "Do you want to continue (Y/N)?" << endl;
+        cin >> answer;
+        if (answer != "y")
+            flag = false;
+    }
+    system("pause");
+    return;
+}
+
+
+
+

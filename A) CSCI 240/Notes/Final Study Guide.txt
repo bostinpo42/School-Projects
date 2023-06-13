@@ -1,0 +1,100 @@
+Stacks, *Queues, Dequeues
+    Queue problem
+
+Algorithm Analysis
+    Recursive time complexity problem(may come from a operation on data structure)
+    May also be iterative
+
+Heaps and Priority Queues
+    Heap is not a search structure (we use to return max or min)
+    Heap problem as an array
+    Maybe an algorithm on one of the operations(heapify, creating a sorted array)
+    The requirements for a heap are that:
+        - MaxHeap: each nodes child is less than or equal to its parent, MinHeap: each nodes child is greater than or equal to its parent
+        - A heap implemented as a binary tree MUST be a complete binary tree.
+
+Hash tables, Maps, and Skip Lists
+    May be a question on hash tables
+    Question about hashing, hash function and its components
+    **Likely wont be a skip list problem**
+
+    Hash tables generally consist of two major components: a bucket array and a hash function. 
+        The bucket array is an array made up of "buckets" which are collections of k-v pairs. 
+    When we are hashing to create a key we must use a hash code.
+    Hash codes are typically comprised of two components: H1(turns keys into integers) and H2(compression)
+        We first apply a hash code to turn our key into an integer, this can be done in multiple ways.
+            Casting: We can cast our key to an integer value, this can then be compressed by our H2 function. This is usually done for bytes, shorts, ints, chars, and floats.
+            Summing components: We partition the bits of the key into components of a fixed length (16 or 32 bits) and sum the components (ignoring overflows) using addition or exclusive or. Used for longs and doubles.
+            Polynomial Hash Codes: We use horner's rule to convert our key into a polynomial to avoid collisions with strings or tuples. A common constant to use is 31, which is the default for java.
+        We have created a hash code from our key, but at this point it is not suitable as an index to our bucket array. To do so we must then use a compression function(H2) to compress our hash code.
+            Division Method: h2(y) = y % n 
+            MAD method: h2(y) = [(ay + b) % p] % n 
+    Sometimes there will be collisions when mapping keys to the table. h(k1) = h(k2)
+        To resolve such collisions we can use something known as open addressing, in which we find the next unused or available location in the hashtable. This is also known as probing.
+            Two probing techniques we can use are known as:
+                Linear probing: we simply take the hashcode and increment it by 1, seeing if that element is available in the bucket array. We continue until there is an available spot in the array.
+                Quadratic probing: We try A[i + f(j) % n], for j = 0, 1, 2 and where f(j) = j^2. Quadratic probing only guarantees a successful put operation when the hash table is at most half full and
+                its size is a prime number.
+
+Search Trees
+    BSTs, MSTs, M-way search trees, maybe AVL
+
+    B-trees
+        All leaves must be at the same level
+        The degree of the tree determines the amount of keys a node may have, and the amount of children a node may have.
+        The amount of keys per node is B - 1 <= # of keys in node < 2B - 1
+        The amount of children is bound by B <= # of children < 2B
+        All keys are sorted in ascending order. K1 < K2, and so on.
+        Insertion may only happen at leaf nodes.
+        All internal, non-leaf nodes must have at most M children and at least ceil(m/2) children.
+        Root must have at least 2 children.
+
+Sorting, Sets, Selection
+    Quicksort question, may be about the algorithm
+
+Text Processing and Dynamic Programming
+    Dynamic programming problem (0/1 knapsack)
+        **already did longest common subsequence, likely wont be on test**
+    Huffman coding algo.
+
+Graphs
+    Traversals(DFT, BFT)
+    Searching(DFS, BFS, Uniform Cost*, A-star*)
+
+    A*: uses problem to generate graph & A* through it, finding shortest path
+    State: holds the "state" of each vertex 
+    Problem: generates states from given state 
+
+    f(n) = g(n) + h(n)
+        g(n) = path cost so far to reach n 
+        h(n) = estimated cost from n to goal
+        f(n) = estimated total cost of path from n to goal 
+
+Memory Management  
+    Virtual Memory System - Allows programs to run even if the program is only partially loaded into Memory (Programs became too large for physical memory)
+        2^64 Virtual memory addresses, which map to physical memory
+            Obviously, we do not have this much physical memory, so we have to map the virtual memory to physical memory.
+            The Memory Management Unit(MMU) is responsible for translating virtual memory to physical memory so that our programs know where to access what it needs.
+            Virtual memory is comprised of fixed-size pages. Physical memory consists of page frames. Page tables are responsible for mapping virtual memory to physical memory.
+            While a program is running pages will be mapped to page frames as necessary. When a page is no longer being used, the page frame may be written to the disk so that the frame
+            may be used with a different page of virtual memory, as needed.
+            
+    RDBMS - Relational Database Management System(keys)
+        Databases have relational data(keys) which we can use to create smaller databases which are used to map and search the entire database.
+
+    filesystem(partition, logical drives, inode, dir, file, block)
+
+
+**
+AVL Trees(rotations)
+Hoffman Coding Algorithm
+0-1 knapsack
+Graph Traversals(Unweighted Breadth & Depth First) 
+    Uniform Cost(weighted greedy)
+    A*(heuristic weight)
+B-trees(2-4)
+
+
+Breadth-first: Queue for frontier
+
+Depth-first: Stack for frontier

@@ -1,0 +1,14 @@
+To get an integer value input from the user, because the value is stored as a string in memory ex. 55 = '5' '5' ; to get the actual integer value we have to
+get the offset from an ASCII table. so to get 5 we would have to find the ASCII value for '5' and subtract 48 (where the digits begin in ASCII). so 53 - 48 = '5'
+
+String prompt goes into data
+Input goes into BSS
+
+
+(53-48) + 10(53-48) = 55
+
+when the user input a number ex '8' it will appear as '8', 0xA (newline) because they input enter.
+
+GDB command to print a buffer (labeled fib_buf) of 9 unisgned integers
+
+(gdb) p/d (unsigned int) array

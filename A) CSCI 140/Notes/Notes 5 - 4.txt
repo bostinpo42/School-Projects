@@ -1,0 +1,14 @@
+					Topic 5 Classes, Lecture 5c Operator Overloading
+
+Classes & Structs are almost exactly the same, with one exception which is: 
+	Structs come from C programming, which does not contain classes. Structs are NOT objects and therefore do not have member functions in C programming
+		The one difference between classes and structs in C++ : 
+			By default, if no access modifiers are declared in a class everything within the class will be private.
+			By default, if no access modifiers are declared in a struct everything within the struct will be public.
+
+
+Data Conversion Types:
+	Implicit - data types will usually be converted
+	Explicit - data types MUST be explicitly defined
+	None - no data conversion
+

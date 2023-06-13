@@ -1,0 +1,30 @@
+			Topic 9 Lecture 9b Strings and Arrays Cont
+
+Getting the effective address of a specific element of a 2d array:
+
+|t| = sizeof t
+|r| = # of rows
+|c| = # of cols
+
+t board[r][c]
+	^  ^ 
+	subscripts
+
+[board + ((|r|*r + |c|*c)*|t|)]
+
+Rather than multiplying to get a specific element in an array, instead use shifting operations as they are much more efficient
+
+Selection Sort
+
+25, 14, 3, -2, 15, 33, 55, 4
+
+Selection sort will partition the array between sorted and unsorted sections, first by finding maximum values and putting them in the sorted section
+	it will keep swapping them to the end of the array, putting the smaller numbers into the unsorted section
+	It will iterate through each element to keep finding larger numbers and swapping them around until the array is sorted
+
+Insertion sort will find the smallest value and put it into subscript 0, which is the "sorted" section of the array.
+	It will keep iterating through the array to find smaller numbers, putting them into the lower subscripts, and moving larger numbers up.
+	
+Bubble sort will work its way up the array, with each iteration it keeps track if any elements were swapped. If no swap ocurred during an iteration,
+	the sorting will stop. Bubble sort compares the current element to the next element up, swapping the values if the current element is larger
+	than the next.

@@ -1,0 +1,80 @@
+/*
+a. Program Description : This program takes a user input array and removes the duplicate numbers in the array.
+b. Author : Austin Ngo
+c. Input variables : size, array
+d. Process Flow : User inputs array sizes and the values of the array, then the program compares them and outputs the result.
+e. Output variables : array
+*/
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <cstdlib> 
+#include <iomanip>
+#include <math.h>
+#include <algorithm>
+
+using namespace std;
+
+void remove_duplicates(int* array, int& size);
+
+int main() 
+{
+
+    int size;
+    cout << "Please enter number of elements in the array: ";
+    cin >> size;
+
+    int* array = new int[size];
+
+    cout << "Enter elements of the array: ";
+
+    for (int i = 0; i < size; i++)
+        cin >> array[i];
+
+    cout << "\nThe original array:" << endl;
+
+    for (int i = 0; i < size; i++)
+        cout << array[i] << " ";
+
+    cout << endl << endl;
+
+    remove_duplicates(array, size);
+
+    cout << "Array with duplicates removed: " << endl;
+
+    for (int i = 0; i < size; i++)
+        cout << array[i] << " ";
+
+    cout << endl;
+
+    delete array;
+
+    system("pause");
+    return 0;
+
+}
+
+void remove_duplicates(int* array, int& size) 
+{
+
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if (array[i] == array[j])
+            {
+                for (int k = i; k < size - 1; k++)
+
+                    array[k] = array[k + 1];
+
+                size--;
+
+                i--;
+
+            }
+
+        }
+
+    }
+
+}

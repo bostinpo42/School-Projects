@@ -1,0 +1,47 @@
+// ConsoleApplication1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+int total(float first, float second)
+{
+	float sum = first + second;
+	cout << "Total is " << sum << endl;
+	return 0;
+}
+int diff(float first, float second)
+{
+	float difference = first - second;
+	cout << "Difference is " << difference << endl;
+	return 0;
+}
+int prod(float first, float second)
+{
+	float product = first * second;
+	cout << "Product is " << product << endl;
+	return 0;
+}
+int quot(float first, float second)
+{
+	float quotient = first / second;
+	cout << "Quotient is " << quotient << endl;
+	return 0;
+}
+int main()
+{
+	float first;
+	float second;
+	cout << "Please enter the first value ";
+	cin >> first;
+	cout << "Please enter the second value ";
+	cin >> second;
+	total(first, second);
+	diff(first, second);
+	prod(first, second);
+	quot(first, second);
+	system("pause");
+	return 0;
+}

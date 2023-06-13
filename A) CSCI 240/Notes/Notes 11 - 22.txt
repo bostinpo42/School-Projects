@@ -1,0 +1,61 @@
+Topic 10 Graphs Cont.
+
+Shortest Path Problem 
+    Dijkstra's Algorithm
+        Minimization problem, optimization problem
+            The original algorithm finds the shortest path between two nodes.
+            More common variant fixes a single node as the source, and finds the shortest path from the source to all other nodes in the graph.
+            Produces a shortest path tree 
+                Given a weighted graph, directed or undirected, find the shortest (cheapest) path from a soure vertex to all other vertices
+        Greedy method algorithm - this approach is solved by choosing the optimal (shortest, smallest, largest, etc.) at each step.
+            the Greedy method does not always produce an optimal solution (overall).
+
+    Algorithm
+        Select a starting node
+        Initialize the path-cost table, all vertices intialized to infinity except the source which is initialized to 0.
+        Calculate the shortest path
+            Let the "step cost" tie the weight of the edge traversed from a vertex to an ajacent vertex
+            Let the "path-cost" be the sum of step-costs along a path from the source vertex to any other.
+            Let P(u) be the path-cost to vertex u.
+            Let u be the source vertex and v to be an ajacent vertex.
+            Let C(u, v) be the step-cost from u to v.
+            We update the unexplored vertex that currently holds the shortest path-cost with:
+                if P(u) + C(u, v) < P(v) then P(v) = P(u) + C(u, v)
+                "Relaxation operation" - lookup for shortest path
+            Examine the explored node with the smallest path-cost
+            Update the path-costs for its neighbors using the above expression then mark the examined node as explored
+            While there are unexplored nodes, go to 1.
+
+Let the set U represent all of the vertices.
+    Step cost from u, v 
+        C(u, v) = the weight of the edge <u, v>
+
+    Path cost is the sum of all steps from the source to a particular vertex 
+        P(u)
+
+
+    N-Queen Problem
+        Minimization problem
+
+    Heuristics - a way to inform the search given a certain condition
+        Usually implemented as a function, used to limit a search, i.e iterative deepening search (tells the search when to stop)
+
+    Problem - generic/templated object which contains the conditions / states in which we either begin or need to reach to solve the 'problem'
+
+Uniform Cost Search
+    
+    g(u) = path cost
+
+    h(u) = estimate, should be less than or equal to g1(g), or the actual path-cost to the goal.
+
+    f(u) = g(u) + h(u)
+
+
+A* Search
+    utilizes uniform cost search but with good heuristics.
+    f(u) = g(u) + h(u)
+
+    A-star(problem, heuristic)
+
+
+

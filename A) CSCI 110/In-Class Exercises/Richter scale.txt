@@ -1,0 +1,36 @@
+// ConsoleApplication1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+int main()
+{
+    float richter;
+    cout << "Please enter the Richter Scale number (1.0-9.0) to see the result of an Earthquake ";
+    cin >> richter;
+    if (richter >= 8.0)
+    {
+        cout << "Most structures fail.";
+    }
+    else if (richter >= 7.0)
+    {
+        cout << "Many buildings destroyed.";
+    }
+    else if (richter >= 6.0)
+    {
+        cout << "Many buildings considerably damaged, some collapse.";
+    }
+    else if (richter >= 4.5)
+    {
+        cout << "Damaged to poorly constructed buildings.";
+    }
+    else
+    {
+        cout << "No destruction of buildings.";
+    }
+}

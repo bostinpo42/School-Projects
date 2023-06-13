@@ -1,0 +1,91 @@
+				8A Advanced Procedures
+
+Spacial Locality - elements used in procedure are very close together in memory (cache)
+	this prevents cache misses because the elements in the procedure are loaded into cache memory in one fell swoop
+
+Temporal Locality - Frequency in which we do operations
+
+Jumping around in memory is inefficient because it isn't feasible to load everything into cache memory, resulting in cache misses.
+We want our data close together so that it is more efficient while working on certain sections of code
+
+Keep elements of a function close together in a stack frame to improve performance. (instructions, declared variables, etc)
+
+When working with high level languages the compiler will automatically move things around in memory to ensure variables are next to their instructions
+to improve performance.
+
+	     V parameters
+void swap (int& a, int& b) {
+	int temp = a;	<- local variables (temp can be a register, but would need to be pushed. why not use a memory location?)
+	a = b;
+	temp = b;
+}
+
+
+^= xor equals
+void swap (int&a, int&b) {
+	a ^= b;
+	b ^= a;
+	a ^= b;
+}	// this way of swap does not use a variable so it is slightly more efficient because it doesn't use memory.
+
+
+
+STACK
+	
+
+		V- EBP base pointer
+-------------	<- Highest address
+   Data
+-------------   <- ESP stack pointer
+
+EBP + ESP are known as the stack frame. Anything within the stack frame (data) is known an activation record. 
+
+Any time a recursive procedure is called a new stack frame is made, but only for active procedures.
+	A procedure which calls another procedure may still be active even though it is put on hold while another procedure is running
+
+Activation record for caller, stack frame
+------------- 
+8 bytes
+-------------
+4 bytes parameter 2
+-------------
+4 bytes parameter 1
+-------------
+4 bytes return address	| push ebp - happens implicitly by the procedure call
+-------------
+EBP          > points to the top of stack for callee
+------------- 
+
+instead of pushing and popping registers, we can put the address of esp into ebx, and after the procedure returns we move ebx back into esp
+which will remove the parameters or arguments that we declared in the stack frame.
+
+Caller (procedure that calls another procedure)							Callee (procedure that is getting called)
+- if necessary preserve eax, ecx, edx								- preserve ebx, esi, edi, esp, ebp
+- if necessary push arguments in reverse order onto the stack					- push ebp 
+	just before the call									- move into ebp, esp
+- after call remove arguments from stack							- just before return: pop preserved registers, pop ebp
+- push arguments in reverse order and call							- reserve space on stack for local variables
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

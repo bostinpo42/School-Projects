@@ -1,0 +1,44 @@
+				5/16 EXAM # 3
+
+1) Problem with Inheritence, stream insertion operator overriding, assignment operator overriding
+
+2) Friend functions are not influenced by access modifiers (private and public). Insertion operator overriding should be a friend function
+
+3) Given class declaration and implementation, try to find errors, specifically where the problem is and what it is
+
+4) Fill in the blank 
+
+5) Public and Private access modifiers, how they affect functions and inheritence (Protected as well)
+
+6) New operator, review stack. Dynamically allocated memory and deleting new elements and arrays of elements delete[]
+
+7) Static members and static methods, review notes for examples (counter variable in a class)
+	static means data member of class is available to all classes, cannot be accessed by instanced members
+		know what an instance is of a class, what it means similar to object of a class
+			instanciating class
+
+8) know terminology used for inheritence, base and derived, parent and child, etc.
+
+9) look up polymorphism, understand and know polymorphism (variable of base type can be assigned an object of a derived type)
+	read lecture notes 6A, 6B for tables
+
+10) Virtual functions and pure virtual functions (overriden in derived class, derived class will execute function, otherwise the base class will execute it)
+
+11) How we created the pure virtual function, how it made the class an abstract class. The function must be made from a derived class
+
+12) struct and class, the differences between the two
+	structs by default will have public members
+	classes by default will have private members
+
+13) smart pointers, remember what header file was required for smart pointers
+	<memory>
+		creation of a smart pointer, pointer to an object. makeunique for unique pointer
+
+14) Given some programs, know the output and what the program does
+
+15) what the sizeof operator means, and how to use it
+	int v;			sizeof(int)
+	sizeof v;
+
+	int* v;
+	sizeof v; // this will only get the size of a pointer, ALL pointers have the same size

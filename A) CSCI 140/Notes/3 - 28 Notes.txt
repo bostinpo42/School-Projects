@@ -1,0 +1,5 @@
+Project 1 - Muster
+
+Ask the player how many times they want to shake the cup, generate the random values of dice for each cup shake
+
+Array of 6 elements set to 0, increment each die face that shows up, to check for patterns (3 of a kind, etc).

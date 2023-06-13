@@ -1,0 +1,74 @@
+#include "stdafx.h"
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <cstdlib> 
+#include <iomanip>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	float total = 0;
+	int count = 0;
+	float avg = 0;
+	float max = -999;
+	float min = 999;
+	float number;
+	int position = 0;
+	int size = 0;
+	float values[] = { 32, 54, 67.5, 29, 35, 80, 115, 44.5, 100, 65 };
+	for (int i = 0; i < 10; ++i)
+	{
+		total = total + values[i];
+		++count;
+		cout << "values[ " << i << " ] = " << values[i] << endl;
+		if (values[i] > max)
+			max = values[i];
+		if (values[i] < min)
+			min = values[i];
+	}
+	size = count; // Assign count to current size
+	cout << "Total = " << total << endl;
+	avg = total / count;
+	cout << "Average = " << avg << endl;
+	cout << "Largest value = " << max << endl;
+	cout << "Smallest value = " << min << endl;
+	
+	cout << "Please enter a number to do a linear search" << endl;
+	cin >> number;
+	for (int i = 0; i < 10; i++) //search and find
+	{
+		if (values[i] == number)
+		{
+			position = i + 1;
+			break;
+		}
+	}
+	if (position == 0)
+	{
+		cout << "Number not found!" << endl;
+		return 1;
+	}
+	else
+	{
+		cout << "Position = " << position << endl;
+	}
+	// New code here!
+	for (int i = position; i < size; i++)
+	{
+		values[i - 1] = values[i]; //shifting one element forward
+	}
+	size--;
+
+	for (int i = 0; i < size; ++i)
+	{
+		cout << "values[ " << i << " ] = " << values[i] << endl;
+	}
+	cout << "Size = " << size << endl;
+	system("pause");
+	return 0;
+}
+
+

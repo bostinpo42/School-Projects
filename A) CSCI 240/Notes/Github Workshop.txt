@@ -1,0 +1,35 @@
+Version Control with Git
+
+Version Control systems: keep track of changes happening to data store(usually directory of files)
+	does not necessarily need to be for code, it works with any data(documents, projects, etc.)
+		as developers, we can use version control to keep track of changes we make to our codebase.
+
+Modern VCSs allow you to:
+	-find out who wrote a module
+	-find out when a particular line of a particular file was edited
+	-ability to distribute patches locally
+
+Git: standard for VCSs
+	
+
+Git's Data Model
+	models the history of collection of files and folders within a top-level directory as a series of snapshots
+	file is called a blob(bunch of bytes)
+	directory is called a tree, maps names to blobs or trees
+	snapshot is the state of the top-level tree that is being tracked
+	recursive data structure without any cycles
+
+When uploading a project, or a commit, we can branch from an existing project or merge branches into one tree.
+	Snapshots of the current state of a project are called commits in Git.
+
+Snapshots can be identified by their SHA-1 hash
+	called reference
+
+Git Repos, or Repositories are the collection of data objects and references
+	On the disk, git only stores objects and references
+
+config --global user.name "name"
+
+git stash 
+
+

@@ -1,0 +1,45 @@
+// ConsoleApplication1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <cctype>
+
+using namespace std;
+
+int main()
+{
+	string name;
+	double value;
+	string filename;
+	ifstream in_file;
+	ofstream out_file;
+	cout << "Please enter the file name: ";
+	cin >> filename;
+	in_file.open(filename.c_str());
+	if (in_file.fail())
+	{
+		cout << "File not found." << endl;
+		return 1;
+	}
+	out_file.open("D:\\output.txt");
+
+	string line;
+
+	while (getline(in_file, line))
+	{
+		istringstream strm;
+		strm.str(line);
+		strm >> name >> value;
+		cout << "Name is " << name << " and value is " << value << endl;
+		out_file << "Name is " << name << " and value is " << value << endl;
+	}
+	in_file.close();
+	out_file.close();
+	system("pause");
+    return 0;
+}
+

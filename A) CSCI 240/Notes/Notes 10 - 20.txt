@@ -1,0 +1,66 @@
+Topic 7 Search Trees
+
+Although our scope of this class mostly covers Binary trees, we must keep in mind that n-ary trees are commonplace in industry, keep that in mind moving forward.
+
+Binary Search Trees
+
+Eventually we will begin implementing a height to each node, as we start working with balanced trees it becomes important that we try and keep left and right child nodes
+on the same height.
+
+BST Requirements 
+    Given n as the root of the subtree, n's left subtree only contains values that are less than n. (we are assuming the values stored in the tree are unique) 
+    Its right subtree contains values greater than n. 
+
+    N's left and right subtrees are BST's. 
+
+Adding values {10, 5, 4, 7, 13, 14}
+    10 becomes the root.
+    5 becomes the left child of 10.
+    4 becomes the left child of 5.
+    7 becomes the right child of 5.
+    13 becomes the right child of 10.
+    14 becomes the left child of 13.
+
+The search operations of a BST are O(log2n).
+
+Worst case for our BST is O(n). 
+
+Height of the parent: max(height left child, height right child) + 1
+
+AVL Trees
+An AVL is a binary search tree.
+    The issue with BSTs is that it may lead to imbalanced trees, which could cause our efficiency to become O(n) operations for our functions.
+    Rather than prioritize having a full tree, we will prioritize balancing our tree instead, as height determines the performance of our operations.
+    We rearrange our nodes whenever the tree becomes unbalanced.
+    Balance factor of a node is the height of its right subtree minus the height of its left subtree and a node with a balance factor of 1, 0, or -1 is considered balanced.
+
+BalanceFactor(n) = |N.rightchild.height - n.leftchild.height|
+
+Properties of AVL Trees
+    The heights of the two child subtrees of any node may only differ by at most one
+    Add, remove and lookup all take O(log2n) time in both average and worst case.
+
+Add or removing a node may cause the balance factor to become 2 for some node.
+
+4 Imbalance cases:
+    N's left child's left subtree -> right rotation
+    N's right child's right subtree -> left rotation
+    N's left child's right subtree -> left-right rotation
+    N's right child's left subtree -> right-left rotation
+
+
+SKIP LIST:
+
+Vector of node pointers for levels
+
+Each node has a node ptr for levels
+
+Vector<node*> levels;
+
+Each time we get heads on adding a node we add a new link to the levels vector inside the node class.
+    Used for search ptr, 
+
+Write a function which takes a copy of levels and searches the highest level, looking for the greatest node <= to our search term
+    drops levels until it finds the search term
+    return vector of levels
+

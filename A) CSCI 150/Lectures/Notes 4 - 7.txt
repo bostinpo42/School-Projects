@@ -1,0 +1,71 @@
+				Topic 5 Lecture 5
+
+	Stack Operations
+
+Push & Pop - When pushing something onto the stack it decrements the Stack Pointer (SP) by the size of whatever we're pushing (DD will push 4 bytes)
+	and then store what we push into the address decremented by the SP. Pushing a word will push the SP by two bytes.
+Typically we pop what we pushed before pushing another thing onto the stack. We can also offset the SP (SP - 2 for words) to specifically pop something.
+You cannot push a byte, the stack MUST stay word alined. Anything pushed onto the stack must be a multiple of 2 bytes. 
+Typically you push a word or double word.
+The Data section is also word alined.
+
+Runtime Stack - Managed by the CPU using 2 registers
+	SS (stack segment)
+	ESP (stack pointer)
+
+SP - real-address mode
+
+Ex. 	push eax - we should clear eax before pushing eax
+	push al - NOT allowed, cannot push a byte
+	push ax - allowed.
+
+Push Syntax 
+	PUSH register/memory 16 bits
+	PUSH register/memory 32 bits
+	PUSH immediate 32 bit value
+POP Syntax
+	POP r/m 16
+	POP r/m 32
+
+Pushing/Popping values allows us to readily access a value from memory instead of storing values in registers, it takes the labour out of it.
+	We push values into memory so that we do not lose the data when trying to access them later. It also allows us to store the data to call a 
+	procedure later.
+
+Calling another procedure creates another stack frame. To keep track of the top of the stack we can use the Base Pointer.
+
+PUSHFD and POPFD
+	push and pop eflags register
+PUSHAD
+	pushes the 32-bit general-purpose registers on the stack
+	order: EAX, ECX, EDX, EBX, ESP, EBP, ESI, EDI
+POPAD
+	pops the same registers off of the stack in reverse order
+PUSHA and POPA
+	does the same as PUSHAD but for the 16-bit registers
+---------------------------------------------------------------------------------------------
+
+	Procedures
+
+When we return (ret) we actually pop the return from the stack, after we call a procedure it pushes the return onto the stack
+	If needed, it is possible to return two values (eax & ebx)
+
+The CALL instruction calls a procedure
+	it pushes offset (EIP) of the next instruction on the stack
+	it also copies the address of the called procedure into the EIP
+
+The RET instruction returns from a procedure
+	pops the top of the stack into the EIP
+
+Rules of Procedure Calling
+	Caller's Rules
+		Before calling a subroutine, the caller should save the contents of certain registers that are designated caller-saved.
+			The caller saved registers are EAX, ECX, and EDX.
+			These are not preserved by the Callee.
+		If passing these parameters to the subroutine using the stack, push them onto the stack before the call.
+			The parameters should be pushed in inverted order (i.e last parameter first) - since the stack grows down
+			The first parameter should be at the lowest address
+			after the subroutine returns, the caller must immediately remove the parameters from the stack.
+		To call the subroutine, use the call instruction
+			This instruction places the return address
+
+

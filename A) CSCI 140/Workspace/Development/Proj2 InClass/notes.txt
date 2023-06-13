@@ -1,0 +1,49 @@
+Design Notes
+
+Dungeon
+    -12 pits distributed randomly
+        *any random funtion generator can be used
+    -1 Aldrac
+    -They should not be located at (0,0), (1,0), (0,1)
+    -The grid should be 8x8, with 64 cells
+    -Enter/exit at (0,0)
+    -1 box of gold (end goal) located at a random location
+    -artifact locations are unknown
+    -artifacts cannot share a cell, they must each have their own individual cells
+    -perceptions are displayed as 
+        * G, gold
+        * S, stench
+        * B, breeze
+        * U, user location
+
+Perception
+    -all perceptions are only in orthagonal cells
+    -when in an orthagonal cell to a pit, we sense a breeze (B)
+    -when in an orthagonal cell to the Aldrac, we sense a stench (S)
+    -when in the cell with the gold, we sense a faint glimmer (G)
+    -perceptions are only displayed when the player enters a cell and will continue to be displayed for the rest of the duration of the game
+
+Movement
+    -player can only move in 4 directions: right, left, up, and down (R, L, U, D)
+    -player can pick up gold with P
+        *cannot pick up gold in an empty room
+        *display message when carrying gold
+    -cannot move out of bounds (issue error: invalid movement)
+
+Gameplay
+    -clear the screen between moves
+    -if the user enters a room with a pit or Aldrac, the game ends with a loss
+    -prompt to play again after the game ends
+    -player wins if they reach the enter/exit (0,0) while carrying the gold
+
+Code
+    -clear instream after input
+    -input should be case insensitive
+    
+Design
+    -class implementation
+        * UI
+        * Dungeon
+        * Controller class
+        
+

@@ -1,0 +1,103 @@
+			4B Pointers
+
+Pointer - special variable that only holds addresses
+
+Pointers are used for indirect addressing
+
+Ex. 
+	int* a;		// Because this pointer is uninitialized, it holds a "garbage" value
+
+No matter what data type we assign a pointer, it will always have the same size because the pointer holds an address
+not a value.
+
+You cannot assign an integer value to a pointer, however:
+Pointers can hold the value 0. 0 Represents a NULL address. 
+
+We can create a NULL pointer in multiple ways:
+
+	int*a{nullptr};
+	int *a {nullptr};
+	int* a{nullptr};
+
+If we are declaring multiple variables in a line:
+
+	int* a, b;	// b will NOT be declared as a pointer, rather it will be a normal int
+	int *a, *b;	// now a and b will be pointers
+
+	int a{20};
+	int* ptr{&a}; // ptr will now hold the address of a
+	
+	&a (address of a) & address of operator
+	*ptr(get the value of what ptr points to) * get value of operator
+
+To access the value of a through the pointer, we have to dereference the pointer.
+
+	std::cout << *ptr << std::endl; // this will output the VALUE of the address stored in ptr.
+
+When we dereference a pointer it becomes an l-value due to the * operator.
+
+	*a = 30; // now we reassign the value stored in the memory location a to 30.
+
+This equates to:
+	a = 30;
+
+We can do arithmetic operations to pointers, in this case we would be offsetting the address of the pointer if we
+add, subtract, increment, or decrement it. For example, if we are pointing to an array and we increment the address
+to it, we can increment over elements of the array.
+
+1) pointer to data
+2) const pointer to data
+3) pointer to const data
+4) const pointer to const data
+
+const int* ptr{&a}; // the value of the ptr cannot be changed, const pointer to data
+
+int* const ptr2{&b}; // the address of ptr2 cannot be changed, pointer to const data
+
+const int* const ptr3{&c}; // the address and value of ptr3 cannot be changed, const pointer to const data
+
+A constant pointer MUST be initialized because the value it holds CANNOT be changed.
+
+---------------------------------------------------------------------------------------------------------------------
+
+Stack Operations : Last in, first out
+
+1) Push - add to collection on stack
+2) Pop - remove from the collection
+3) Peek - returns value on the top of the stack
+4) isEmpty - checks is stack is empty
+
+2 Types of Data Structure Collections:
+	Ordered : data stored in these structures are ordered and organized
+	Unordered : data stored in these structures are not in any specific order
+
+top -> node -> string -> node -> nullptr
+
+top points to an object which contains node, this object points to another object with a string and node, which
+that objects' node points to a nullptr. We can keep chaining objects this way, as we have a top and the bottom of
+the stack
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

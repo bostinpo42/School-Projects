@@ -1,0 +1,7 @@
+Changing Types through Casting
+
+Explicit
+
+Implicit
+- Implicit casting happens when we are trying to convert a data type into another and no information is lost because the data type we are converting is smaller than the
+data type we are converting into.

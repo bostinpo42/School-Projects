@@ -1,0 +1,63 @@
+/*
+a. Program Description : This program takes a file named "babynames.txt" and takes the top 50% of babynames for boys and girls, then outputs it into a file named "output.txt".
+b. Author : Austin Ngo
+c. Input variables : babynames.txt
+d. Process Flow : This program reads a file named "babynames.txt" then takes the top 50% popular babynames and outputs the results to a faile named "output.txt"
+e. Output variables : output.txt
+*/
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+void process_name(ifstream& in_file, double& total, ofstream& out_file)
+{
+    string name;
+    int count;
+    double percent;
+    in_file >> name >> count >> percent;
+    if (in_file.fail())
+    {
+        return;
+    }
+    if (total > 0)
+    {
+        out_file << name << " ";
+    }
+    total = total - percent;
+}
+int main()
+{
+    ifstream in_file;
+    ofstream out_file;
+    in_file.open("H:\\babynames.txt");
+    if (in_file.fail())
+    {
+        return 0;
+    } 
+
+    double boy_total = 50;
+    double girl_total = 50;
+
+    out_file.open("H:\\output.txt");
+
+    while (boy_total > 0 || girl_total > 0)
+    {
+        int rank;
+        in_file >> rank;
+        if (in_file.fail())
+        {
+            return 0;
+        }
+        out_file << rank << " ";
+        process_name(in_file, boy_total, out_file);
+        process_name(in_file, girl_total, out_file);
+        out_file << endl;
+    }
+    in_file.close();
+    out_file.close();
+    system("pause");
+    return 0;
+}

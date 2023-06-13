@@ -1,0 +1,74 @@
+for (int i = 0 ; i < 10 ; ++ i)
+{
+	for (int j = 0 ; j < 10 ; ++j)
+	{
+	cout << "i = " << i << "j = " << j;
+	}
+	cout << endl;
+}
+
+
+
+
+The program will run 100 times. 
+
+The inner loop runs faster than the outer loop.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// This program runs a 4x5
+
+#include "stdafx.h"
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	for (int i = 1; i <= 10; ++i)
+	{
+		for (int j = 1; j <= 4; ++j)
+		{
+			cout << setw(8) << pow(i, j);
+		}
+		cout << endl;
+	}
+	system("pause");
+	return 0;
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Monte Carlo Method - Method for finding the approximate value of pi
+
+
+#include "stdafx.h"
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <cstdlib>
+#include <string>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	const int TRIES = 100000000;
+	srand(time(0));
+	int hits = 0;
+	for (int i = 1; i <= TRIES; i++)
+	{
+		double r = rand() * 1.0 / RAND_MAX; // Between 0 and 1
+		double x = -1 + 2 * r; // Between -1 and 1
+		r = rand() * 1.0 / RAND_MAX;
+		double y = -1 + 2 * r;
+		if (x * x + y * y <= 1) { hits++; }
+	}
+	double pi_estimate = 4.0 * hits / TRIES;
+	cout << "Estimate for pi: " << pi_estimate << endl;
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,35 @@
+					Topic 7A Arithmetic Operations
+
+Shift operations - bit shifts are the most cost and performance effective way of performing operations involving powers of two.
+
+For example:
+	1010 ; unsigned value 10
+	shift right, divide by two
+	0101 ; value is now 5 after shifting right
+
+The least significant bit moves into the carry flag after doing a shift right operation. The most significant bit will get filled with a 0. Logical shift
+For arithmetic shifts, the most significant bit will get padded and the new filler will be the same as the previous most significant bit.
+
+When we shift left by n bits we multiply by 2^n bits.
+
+00001010 - 10
+00010100 - 20 after shifting 1 bit, multiply by 2^1
+
+Syntax:
+	shl	dl, 1 ; shifts dl register to the left 1 bit
+
+We can shift both registers or memory locations, but we must know the size of the memory location that we are shifting.
+
+	shl	byte[esi], 2 ; shifts esi 2 bits to the left, multiply by 4
+
+Shift right (shr) is always a logical shift operation, meaning it is an unsigned shift and will not pad the most significant bit
+
+Shift arithmetic right (sar) will pad the most significant bit making it a signed operation.
+
+Rotate right (ROR) shifts all bits to the left and the least significant bit is copied both into the carry flag and the most significant bit
+
+clc = clear carry flag
+
+stc = set carry flag
+
+When doing binary multiplication the multiplicand gets shifted left one bit, and the multiplier gets shifted to the right

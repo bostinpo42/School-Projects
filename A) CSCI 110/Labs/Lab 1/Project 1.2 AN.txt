@@ -1,0 +1,37 @@
+// CSCI Project 1.2.cpp : This file contains the 'main' function. Program execution begins and ends there.
+/*1.	Prolog
+a.	A program which reads two times in military format and prints the number of hours and minutes between the two times.
+b.	Author : Austin Ngo
+c.	Input variables : First time, second time
+d.	Process Flow : This program takes the first and second time input by the user and calculates the amount of time elapsed between the two.
+e.	Output variables : Time elapsed
+*/
+#include <iostream>
+#include <string>
+#include <cstdlib>
+using namespace std;
+
+int main()
+{
+    float first_time;
+    float second_time;
+    int time_elapsed;
+    cout << "Please enter the first time ";
+    cin >> first_time;
+    cout << "Please enter the second time ";
+    cin >> second_time;
+    if (first_time > second_time)
+    {
+        time_elapsed = 2360 - first_time + second_time;
+        cout << "The time elapsed is " << time_elapsed / 100 << " hours and "
+            << time_elapsed % 100 << " minutes." << endl;
+    }
+    else
+    {
+        time_elapsed = first_time - second_time;
+        cout << "The time elapsed is " << abs(time_elapsed) / 100 << " hours and "
+            << abs(time_elapsed % 100) << " minutes." << endl;
+    }
+    return 0;
+}
+

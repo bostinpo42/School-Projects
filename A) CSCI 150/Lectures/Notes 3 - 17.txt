@@ -1,0 +1,13 @@
+VSCode Terminal Instructions
+nasm -f elf -g [filename] ; Assembles object file
+ld -m elf_i386 -o [filename for executable] [object filename] ; Links object file to executable
+ls
+./[filename]
+sudo apt install gdb ; installs debugger
+
+more concisely,
+nasm -f elf -g [filename.asm] && ld -m elf_i386 [objectfilename.o] -o [filename for executable] && gdb [executable name]
+assembles object file		links object file			builds executable		runs debugger
+
+-------------------------------------Lecture----------------------------------------------------------------------
+

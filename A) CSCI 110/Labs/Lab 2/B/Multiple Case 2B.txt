@@ -1,0 +1,128 @@
+/*
+a. Program Description : This program takes a user input word and counts how many syllables the word contains.
+b. Author : Austin Ngo
+c. Input variables : Word
+d. Process Flow : User inputs word, the program loops for each letter of the word to check for a vowel, then increments the amount of syllables. Double vowels and the letter 'e' at the end of a word do not count  towards syllables.
+e. Output variables : The number of syllables in a word.
+*/
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <cstdlib> 
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	string word1;
+	string word2;
+	string word3;
+	string word4;
+	int syl1 = 0;
+	int syl2 = 0;
+	int syl3 = 0;
+	int syl4 = 0;
+
+	cout << "Please enter 4 words to find out how many syllables they contain. " << endl;
+	cin >> word1 >> word2 >> word3 >> word4;
+
+	for (int i = 1; i <= 2; i++)
+	{
+		if (i == 1)
+		{
+			cout << "Words";
+		}
+		else if (i == 2)
+		{
+			cout << setw(30) << "Syllables" << endl;
+		}
+	}
+
+	for (int vowels = 0; vowels < word1.length(); vowels++)
+	{
+		if ((word1[vowels] == 'a') || (word1[vowels] == 'e') || (word1[vowels] == 'i') || (word1[vowels] == 'o') || (word1[vowels] == 'u') || (word1[vowels] == 'y'))
+		{
+			if ((word1[vowels - 1] == 'a') || (word1[vowels] - 1 == 'e') || (word1[vowels] - 1 == 'i') || (word1[vowels] - 1 == 'o') || (word1[vowels] - 1 == 'u') || (word1[vowels] - 1 == 'y'))
+			{
+				syl1 = syl1 - 1;
+			}
+			syl1 = syl1 + 1;
+			if (word1[word1.length() - 1] == 'e')
+			{
+				syl1 = syl1 - 1;
+				if (syl1 == 0)
+				{
+					syl1 = syl1 + 1;
+				}
+			}
+
+		}
+	}
+	for (int vowels = 0; vowels < word2.length(); vowels++)
+	{
+		if ((word2[vowels] == 'a') || (word2[vowels] == 'e') || (word2[vowels] == 'i') || (word2[vowels] == 'o') || (word2[vowels] == 'u') || (word2[vowels] == 'y'))
+		{
+			if ((word2[vowels - 1] == 'a') || (word2[vowels] - 1 == 'e') || (word2[vowels] - 1 == 'i') || (word2[vowels] - 1 == 'o') || (word2[vowels] - 1 == 'u') || (word2[vowels] - 1 == 'y'))
+			{
+				syl2 = syl2 - 1;
+			}
+			syl2 = syl2 + 1;
+			if (word2[word2.length() - 1] == 'e')
+			{
+				syl2 = syl2 - 1;
+				if (syl2 == 0)
+				{
+					syl2 = syl2 + 1;
+				}
+			}
+
+		}
+	}
+	for (int vowels = 0; vowels < word3.length(); vowels++)
+	{
+		if ((word3[vowels] == 'a') || (word3[vowels] == 'e') || (word3[vowels] == 'i') || (word3[vowels] == 'o') || (word3[vowels] == 'u') || (word3[vowels] == 'y'))
+		{
+			if ((word3[vowels - 1] == 'a') || (word3[vowels] - 1 == 'e') || (word3[vowels] - 1 == 'i') || (word3[vowels] - 1 == 'o') || (word3[vowels] - 1 == 'u') || (word3[vowels] - 1 == 'y'))
+			{
+				syl3 = syl3 - 1;
+			}
+			syl3 = syl3 + 1;
+			if (word3[word3.length() - 1] == 'e')
+			{
+				syl3 = syl3 - 1;
+				if (syl3 == 0)
+				{
+					syl3 = syl3 + 1;
+				}
+			}
+
+		}
+	}
+	for (int vowels = 0; vowels < word4.length(); vowels++)
+	{
+		if ((word4[vowels] == 'a') || (word4[vowels] == 'e') || (word4[vowels] == 'i') || (word4[vowels] == 'o') || (word4[vowels] == 'u') || (word4[vowels] == 'y'))
+		{
+			if ((word4[vowels - 1] == 'a') || (word4[vowels] - 1 == 'e') || (word4[vowels] - 1 == 'i') || (word4[vowels] - 1 == 'o') || (word4[vowels] - 1 == 'u') || (word4[vowels] - 1 == 'y'))
+			{
+				syl4 = syl4 - 1;
+			}
+			syl4 = syl4 + 1;
+			if (word4[word4.length() - 1] == 'e')
+			{
+				syl4 = syl4 - 1;
+				if (syl4 == 0)
+				{
+					syl4 = syl4 + 1;
+				}
+			}
+
+		}
+	}
+	cout << word1 << setw(30) << syl1 << endl;
+	cout << word2 << setw(30) << syl2 << endl;
+	cout << word3 << setw(31) << syl3 << endl;
+	cout << word4 << setw(32) << syl4 << endl;
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,170 @@
+Chapter 6 Arrays
+-----------------------------------------------------------------
+
+Array Syntax
+-----------------------------------------------------------------
+
+int numbers[10];                // Array of 10 intergers
+
+const int SIZE = 10;
+int numbers[SIZE]'		// Its a good idea to use a named constant for the size
+
+int size = 10;
+int numbers[size];		// In standard C++, the size of an array must be constant. This array will not work with all compilers. You cannot change the size of an array.
+
+int squares[5] = { 0, 1, 4, 9, 16 };  // Array of five intergers, with initial values
+int squres [] = { 0, 1, 4, 9, 16};    // You can omit the array size if you supply the initial values. The size is set to the number of initial values.
+
+int squares[5] = { 0, 1, 4}     // If you supply fewer initial values than the size, the remaining values are set to 0. This array contains 0, 1, 4, 0, 0.
+
+string names[3]'		// Array of 3 strings.
+
+If you declare an array of 10 values, you cannot supply more than 10 values, as it is above the capacity of the array.
+
+-----------------------------------------------------------------
+
+Accessing an Array Element
+
+-----------------------------------------------------------------
+
+An array element can be used like any variable. To access an array element, you use the notation:
+
+values[i]      // 'i' is the index.
+
+
+
+double values [10];
+...
+cout << values[4] << endl; // This accesses the 5th index of the array. Index starts at 0. Index + 1 = position of the array
+
+
+values[4] = 17.7;          // Replaces the value of the 4th index to 17.7.
+cout << values[4] << endl;  // The value is now 17.7
+
+
+-----------------------------------------------------------------
+
+Partially-Filled Arrays
+
+-----------------------------------------------------------------
+
+Arrays will usually hold less than CAPACITY elements. We call this kind of array a partially filled array.
+
+How many actual elements are there in a partially filled array? We will use a companion variable to hold that amount:
+
+const int CAPACITY = 100;
+double values[CAPACITY];
+
+int current_size = 0 // array is empty
+
+-----------------------------------------------------------------
+
+current_size = 4; // array now holds 4.
+
+-----------------------------------------------------------------
+
+While starting an array, use while loops for input, once the array is filled then you can use for loops to process the array.
+
+-----------------------------------------------------------------
+
+Illegally Accessing an Array Element - Bounds Error
+
+-----------------------------------------------------------------
+
+cout << values[10];  // A bounds error occurs when you access an element outside the legal set of indices
+
+-----------------------------------------------------------------
+
+Use arrays for sequences of related values
+
+double personal_data[3];
+personal_data[0] = age;
+personal_data[1] = bank_account;
+personal_data[2] = shoe_size; // Improper array, these doubles do not have the same meaning. The values are not related.
+
+-----------------------------------------------------------------
+
+Common Algorithms - Copying
+
+-----------------------------------------------------------------
+
+Consider these two arrays:
+
+int squares[5] = { 0, 1, 4, 9, 16 };
+int lucky_numbers[5];
+
+How do we copy the values from squares to lucky_numbers?
+
+squares = lucky_numbers; // This seems like the easy approach, but this will not work as intended.
+
+int squares[5] = { 0, 1, 4, 9, 16 };
+int lucky_numbers[5];
+
+for (int i = 0; i < 5; i++)
+{
+	lucky_numbers[i] = squares[i];
+}
+
+-------------------------------------------------------------------
+
+Common Algorithms - Linear Search
+
+Find the position of a certain value, 100, in an array:
+
+int pos = 0;
+bool found = false;
+while (pos < size of values && !found)
+{
+	if (values[pos] == 100) // looking for 100
+	{
+		found = true;
+	}
+	else
+	{
+		pos++;
+	}
+}
+
+-------------------------------------------------------------------
+
+Common Algorthims - Removing an Element, Unordered
+
+values[pos] = values[current_size - 1];
+current_size--;
+
+-------------------------------------------------------------------
+
+Removing an Element, Ordered
+
+for (int i = pos + 1; i < current_size; i++)
+{
+	values[i-1] = values[i];
+}
+current_size--;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

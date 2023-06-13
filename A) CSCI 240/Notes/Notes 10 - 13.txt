@@ -1,0 +1,81 @@
+Topic 6 - Hashing and Linked Lists Revisit
+
+Regardless of single or double linked list, in order to find something in the list requires O(n) operations, even if the list is sorted.
+
+Downsides to linked list: add, search, remove of an ordered linked list is usually O(n) in time complexity.
+
+Skip List: probabilistic data structure that allows a high probability of O(logn) complexity.
+
+Skip list can reduce time complexity of add, remove, and search to O(logn) with a high probability.
+
+    Linked list - we often use pointers in linked lists, such as a head and tail. 
+        for instance, if we have head pointing to nullptr, we could refer to it as the sentinel. 
+            Sentinels act as our bounds for the linked list.
+                opposite ends of the linked list which point to null would be referred to as -infinity and +infinity    
+                    in a way, these nodes will act as a sort of limit for our linked list.
+                        this is assuming that our linked list is sorted.
+    
+
+    lvl2 ->    ->    -> 22 -> 25
+    lvl1 ->    ->    -> 22 -> 25 -> 33
+    lvl0 -> 10 -> 20 -> 22 -> 25 -> 33 -> 
+
+    starting with level 0, we add 10. We have 3 levels we can add to. we flip our coin, it lands tails, so we don't add 10 to level 1.
+    we add 20, flip a coin and it lands tails. we do not add 20 to either level 1 or 2.
+    we add 22, it lands on heads. we not only add 22 to lvl 0 but also lvl 1.
+    we flip again, it lands heads. we then add 22 to lvl 2.
+    we flip again, it lands on tails. we stop adding 22 to levels now.
+        Note: we can determine how many levels there will be. if we reach that limit we stop instead of continuing to roll.
+        We cannot add anything to level 2 that isn't already in level 1.
+    we then begin adding 25, we flip once again, and it lands on heads. we push 25 up to level 1.
+    we flip again, it lands on heads. 25 is put up to lvl 2.
+    we then add 33. we flip a coin, it lands on heads. we promote 33 to lvl 1.
+
+    // we can set an arbitrary limit to how many levels a skip list has, but it can be unlimited.
+
+    To search for a value we start at the highest level, in this case we are searching for 20.
+        our search goes top down in terms of levels, then left to right.
+            we are looking for a node with a key with a value < 20.
+                the first node in level 2 is 22, 20 is not in level 2 so we go to lvl 1.
+                    22 is once again the first node, so we go to level 0.
+                        from level 0 we search left to right for our key value.
+                            Our search is contingent on a search pointer that points to the last item tracked during the search.
+                                our search pointer will have a pointer for each level.
+                                    have search return an array of pointers. (pointers for each level)
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+    lvl2 ->    ->    -> 22 -> 25
+    lvl1 ->    -> 20 -> 22 -> 25 -> 33
+    lvl0 -> 10 -> 20 -> 22 -> 25 -> 33 -> 
+
+    We want to add 23. We search the list for numbers larger than 23, once we search through for 25, we then add our 23 node. 
+        After adding, we flip a coin to determine whether or not 23 gets promoted to upper levels.
+
+Algorithm for add skip list:
+    start at highest level
+    search for the greatest key that is less than, or equal to, the search term.
+    if found, or null
+        begin on that node or null on the next lower level
+    if key is found
+        replace the value with the new value
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Skip Lists
+
+Insert: for item, the element to be insearted, search the list to find where the item fits.
+    this will be the node with the greatest item less than or equal to the item being insearted    
+    always insert the element into the bottom level (L0)
+    
+Delete: search for the item to remove   
+    if it exists then remove it from all the levels it exists in
+
+Search: start at the beginning of the highest level and search for the node with the greatest key value < the search term
+    if an item was found that equals search term then return a reference to the bottom most node in that column
+    drop to the level below and continue to search from the node that was found in the previous step
+    if an item was found with the same value as the search term then return a reference to the bottom most node in that column
+    continue the same process dropping down each level until the bottom level is reached
+    return a reference to the node that contains the greatest item <= to the search term
+
+-------------------------------------------------------------------------------------------------------------------------------------------------

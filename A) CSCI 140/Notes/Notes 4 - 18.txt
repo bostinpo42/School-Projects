@@ -1,0 +1,28 @@
+			4B Arrays and Pointers (cont)
+
+int array[50] {}; // We can pass this through to a function which takes a pointer as input
+		  // this is equivalent to int* const array;
+
+Arrays are automatically compiled as constant pointers.
+
+void printArray(int*, int size) // we can pass the array pointer into the function.
+{
+}
+
+class public Student {
+	std::string name;
+	std::string address;
+};
+
+student s;
+
+std::cout << s.name << std::endl; // we can use the . operator to access parts of a class, in this case the name for student s
+
+Student* s {new Student}; // we must dereference the address to access student s's name.
+
+Both of these are equivalent to:
+
+std::cout << s->name << std::endl; // the -> operator both dereferences the address which points to the space on the heap where Student is.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+

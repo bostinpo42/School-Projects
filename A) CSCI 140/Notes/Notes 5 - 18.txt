@@ -1,0 +1,14 @@
+				Topic 6 Lecture 6b Virtual Destructors
+
+Problems can occur when using polymorphism to process dynamically allocated objects of a class hierarchy.
+	if a derived-class object with non-virtual destructor is destroyed by applying the delete operator to a base pointer to the object,
+		the C++ standard specifies that the behaviour is undefined
+	The simple solution to this problem is to create a public virtual destructor in the base class
+		If a base class structor is declared virtual, the destructors of any derived classes are also virtual
+
+* For exam project we will need to implement virtual destructors
+
+	Virtual destructors should be called in reverse order ? // need to look this up more
+
+
+

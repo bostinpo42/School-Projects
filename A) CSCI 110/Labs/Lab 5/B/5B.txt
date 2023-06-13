@@ -1,0 +1,66 @@
+/*
+a. Program Description : This program takes two user input arrays and combines them into a single array.
+b. Author : Austin Ngo
+c. Input variables : in
+d. Process Flow : User inputs first array, then second array, program then combines both and outputs the result.
+e. Output variables : arr, arrNew, size
+*/
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <cstdlib> 
+#include <iomanip>
+#include <math.h>
+#include <algorithm>
+
+using namespace std;
+
+double* arr = new double[10];
+
+double* read_data(double& size)
+{
+	int i = 0;
+	double in;
+
+	if (size >= 10)
+	{
+		size = size * 2;
+		double* arrNew = new double[size];
+		for (i = 0;i < size / 2;i++)
+			arrNew[i] = arr[i];
+
+		delete[] arr;
+		arr = arrNew;
+	}
+	while (1)
+	{
+		cout << "Please enter the elements of the array individually, press 'enter' after every element and press '0' to quit." << endl;
+		cin >> in;
+		if (in == 0) 
+			break;
+		else
+			arr[i++] = in;
+	}
+	size = i; 
+	return arr;
+}
+
+int main()
+{
+	double size = 0;
+	double* a = read_data(size);
+	cout << "Size of array : " << size << " elements." << endl;
+	cout << "Array elements : \n";
+	for (int i = 0;i < size;i++)
+		cout << a[i] << " ";
+	cout << endl;
+
+	a = read_data(size);
+	cout << "New size of array: " << size << " elements. " << endl;
+	cout << "Array elements: ";
+	for (int i = 0;i < size;i++)
+		cout << a[i] << " ";
+
+	cout << endl;
+	return 0;
+}

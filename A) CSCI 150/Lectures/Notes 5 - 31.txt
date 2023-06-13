@@ -1,0 +1,71 @@
+				Topic 11 Memory Management
+
+The line between heap and bss is known as the : program break
+
+To allocate space on the heap we must change the address which marks the beginning of the heap space.
+	To find the beginning of heap space we perform a syscall (brk syscall) with the value 0 in ebx
+		the syscall is 0x2d
+			This syscall returns the address of the program break
+
+mov eax, 0x2d
+xor ebx, ebx
+int 80h
+
+^this should return the address of the program break on eax
+
+We should store this address in a local or global memory location
+
+To reserve space on the heap we add to this address, keep in mind that the heap grows upward, whereas the stack grows downward
+
+
+Ex: We will be reserving 4KB of space, assume program break is stored in prog_brk
+
+mov eax, 0x2d
+lea ebx, [prog_brk + 4096]
+int 80h
+
+We now have 4096 bytes available in the heap space for our program, beginning at prog_brk
+	We can deallocate this reserved heap space by calling brk with the original address
+
+Linked List:
+
+variable head  ; holds first address in list, points to address of data structure, for instance the node
+	by default is set to NULL if there is nothing stored in the node
+	when we add data to the data structure we reserve space for the payload in the node
+
+node
+{
+	int payload
+	node next
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

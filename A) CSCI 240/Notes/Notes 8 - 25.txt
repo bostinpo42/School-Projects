@@ -1,0 +1,13 @@
+Looping Structure
+
+for ([declaration and/or initialization]; [test condition]; [update])
+[] brackets mean this part of the loop structure is optional
+
+for and while loops will execute 0 or more times.
+do-while loops will execute at least 1 or more times.
+
+Arrays are always more efficient than vectors, because vectors are dynamically allocated and can change in size. This means that it uses dynamically allocated memory,
+therefore it will always be more expensive than an array.
+
+Because arrays are static in size, they are much more memory efficient than a vector, as it does not require an iterator.
+

@@ -1,0 +1,10 @@
+Topic 2: Intro to Data Structures and Algorithms
+
+ADT - abstract data type
+
+An ADT acts as a model or outline of what a data structure should be, but because it is abstract it does not outline how the data structure should be implemented.
+	- An ADT can have multiple implementations.
+	- An ADT should:
+		- be private
+		- be able to represent all possible values of the ADT
+	- An algorithm

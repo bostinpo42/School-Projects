@@ -1,0 +1,114 @@
+Topic 5: Heaps and Priority Queues
+
+Complete Binary Tree
+- Tree such that all internal nodes have two children and leaf nodes are all on the same level filling left to right
+
+Full Binary Tree
+- Tree such that all internal nodes have two children and all leaves have the same depth, all leaf nodes have completely filled their level
+
+Heap: complete binary tree
+	Heap functions
+	add - adds an item to the heap in a way that maintains the heaps structure
+	remove - removes and returns an item from the heap while maintaining the structure of the heap
+	root - returns the root node of the heap, does NOT remove the root
+	clear - empties the heap
+	size - returns the number of items in the heap
+
+Max heap: is a heap where every child item is less than or equal to its parent
+
+Min heap: a heap where every child item is greater than or equal to its parent
+
+
+Max Heap ADT:
+	add- adds an item such that the requirements of the max heap are satisfied
+	max- returns the max value in the heap without removing it
+	remove- removes and returns the max item from the heap while satisfying the requirements of the max heap
+	clear- empties the heap
+	size- returns the number of items in the heap
+
+Min Heap ADT: 	
+	add- adds an item such that the requirements of the min heap are satisfied
+	min- returns the min value in the heap without removing it
+	remove- removes and returns the min item from the heap while satisfying the requirements of the min heap
+	clear- empties the heap
+	size- returns the number of items in the heap
+
+Examples:
+
+Max heap
+	{15, 30, 25, 12, 90, 8}
+
+	the root node is 15
+
+	we add 30, 30 becomes the left child node of 15
+		when adding an item it becomes the last leaf node
+
+	we then upheap on the added item's parent  // to get the parent of ANY node on a complete binary tree, we simply divide the node by 2.
+		compare the root of subtree with its children, if it is lesser then we swap with the greatest child
+		upheap is recursive if a swap is made, as the swap will be called on the parent of the node we originally called upheap on
+		upheap should be called every time we add an item to the heap.	
+
+	the root node is now 30, 15 becomes the left child node of 30
+
+	we add 25, 25 becomes the right child of 30
+
+	we add 12, 12 becomes the left child of 15.
+
+	we add 90, 90 becomes the right child of 15.
+		we call upheap on 90, because 90 is the greatest child of node 15, 90 becomes the new parent node, and 15 becomes 90's child.
+		upheap continues, 90 is larger than its parent, which is 30. 90 becomes the new root, and 30 becomes the child of 90.
+		
+	we add 8, 8 becomes the left child of 25.
+
+
+	if we want to remove a node, we remove the root. 90 is our root so, we would take the last child, in this case 8, and replace it with 90, and remove the last node.
+		we then call downheap, compared changed element with its children. if it is lesser then we swap it with the greatest child, and continue
+		to recursively call itself until the tree meets the requirements of a max tree. 
+		to get the left child node of a parent, we multiply the parent's element by two. to get the right child we multiply by the parent's element by two plus one.
+
+	
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Maxheap and minheap are typically implemented in an array.
+	we are going to ignore the 1st element, or element 0, of the array, because we want to be able to perform arithmetic to find a nodes parent or children.
+
+int compare(int p) {
+	if p = 0 return
+	int rtrn = (array[p] < array[p*2]) ? p*2
+	if (p*2 + 1 <= size) return = (array[rtrn] < array[p*2 + 1] ? p*2 + 1 : rtrn
+
+	if(rtrn != p) swap with greatest child
+	compare(p/2)
+}
+	
+T remove() {
+	T rtrnVal{array[1]}
+	array[1] = array[size]
+	--size
+	downheap(1)
+	return rtrnVal
+}			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
